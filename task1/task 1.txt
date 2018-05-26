@@ -1,0 +1,20 @@
+make a  class called ElectricDevice ,which is an electrical device and stores data about its name(symbolic array in the dynamic memory) and consumed
+power in kW(whole number).Make a class called ElectricNet , which describes an electric network with given maximum consumption of electricity.
+Make the following operators:
+
++ and += with an argument ElectricDevice,which adds a device to a network,if it won't overload ( the total consumption of the energy of all devices
+plugged in it won't be greater than the maximum  consumation of the network)
+
+- and -= with an argument ElectricDevice , which removes  a device from the network,if that device is plugged into this network.Devices are recognized
+by their name.
+
+[] with an argument symbolic array,which gives the opportunity to access certain device,plugged into that network.
+
+! ,which checks if there is a deviced plugged into the network.
+
+++, which doubles the maximumum consumption of energy in that network.
+
+-- , which halves the maximum consumption of energy in the network,if it won't overload after this operation
+
+
+
