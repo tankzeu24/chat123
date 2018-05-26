@@ -14,22 +14,23 @@ Vehicle::Vehicle() : make(nullptr),model(nullptr),color(nullptr)
 
 Vehicle::Vehicle(const char* make,const char* model,const char* color,int year,int mileage):make(nullptr),model(nullptr),color(nullptr)
 {
-    if(year>=1950 && mileage>=0)
+    if (year<1950 || mileage< 0)
     {
+        throw std::invalid_argument("wrong parameters for year OR mileage ");
+    }
     setMake(make);
     setModel(model);
     setColor(color);
     setYear(year);
     setMileage(mileage);
-    }
-    else{
-        throw std::invalid_argument("wrong parameters");
-    }
+
 
 }
 Vehicle::~Vehicle()
 {
-   deleteUsedMemory();
+    delete[] make;
+    delete[] model;
+    delete[] color;
 }
 
 Vehicle::Vehicle(const Vehicle &vehicle) :make(nullptr),model(nullptr),color(nullptr)
@@ -47,11 +48,11 @@ Vehicle& Vehicle::operator=(const Vehicle &vehicle)
     if(this != &vehicle)
     {
 
-    setMake(vehicle.getMake());
-    setModel(vehicle.getModel());
-    setColor(vehicle.getColor());
-    setYear(vehicle.getYear());
-    setMileage(vehicle.getYear());
+        setMake(vehicle.getMake());
+        setModel(vehicle.getModel());
+        setColor(vehicle.getColor());
+        setYear(vehicle.getYear());
+        setMileage(vehicle.getYear());
 
     }
     return *this;
@@ -102,7 +103,7 @@ void Vehicle::setModel(const char* toCopyModel)
 }
 void Vehicle::setColor(const char* toCopyColor)
 {
-   setStringProperty(color,toCopyColor);
+    setStringProperty(color,toCopyColor);
 
 }
 void Vehicle::setYear(int toCopyYear)
@@ -120,21 +121,13 @@ void Vehicle::details() const
 }
 
 
-
-void Vehicle::deleteUsedMemory()
+void Vehicle::setStringProperty(char *&prop, const char *toCopyString)
 {
-   delete[] make;
-   delete[] model;
-   delete[] color;
-}
-
-
- void Vehicle::setStringProperty(char *&prop, const char *toCopyString) {
     if(toCopyString != NULL)
     {
-    delete[] prop;
-    prop = new char[strlen(toCopyString)+1];
-    strcpy(prop, toCopyString);
+        delete[] prop;
+        prop = new char[strlen(toCopyString)+1];
+        strcpy(prop, toCopyString);
     }
 }
 

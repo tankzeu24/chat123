@@ -4,7 +4,7 @@
 
 Truck::Truck() : Vehicle()
 {
-   size=1;
+    size=1;
 }
 
 Truck::~Truck()
@@ -28,7 +28,7 @@ Truck& Truck::operator=(const Truck &truck)
     if(this != &truck)
     {
         Vehicle::operator=(truck);
-       setSize(truck.getSize());
+        setSize(truck.getSize());
     }
     return *this;
 }
@@ -45,15 +45,14 @@ int Truck::getSize() const
     return size;
 }
 
-void Truck::setSize(int s)
+void Truck::setSize(int newSize)
 {
-    if(s>0)
+
+    if(newSize<=0)
     {
-        size=s;
+        throw std::invalid_argument("size must be > 0");
     }
-    else
-    {
- throw std::invalid_argument("size must be > 0");
-    }
+    size=newSize;
+
 
 }

@@ -8,32 +8,32 @@ using namespace std;
 template <class T>
 class Pair
 {
-    public:
-        Pair();
-        virtual ~Pair();
-        Pair(const char* key,const T &value);
-        Pair(const Pair &pair);
-        Pair& operator=(const Pair &pair);
+public:
+    Pair();
+    virtual ~Pair();
+    Pair(const char* key,const T &value);
+    Pair(const Pair &pair);
+    Pair& operator=(const Pair &pair);
 
-        bool operator==(const Pair &pair);
-
-       template<class U>
-      friend ostream& operator<<(ostream &os ,const Pair<U> &pair)
-       {
-          os<<pair.getKey()<< " "<<pair.getValue()<<endl;
+    bool operator==(const Pair &pair);
+    bool operator!=(const Pair &pair);
+    template<class U>
+    friend ostream& operator<<(ostream &os,const Pair<U> &pair)
+    {
+        os<<pair.getKey()<< " "<<pair.getValue()<<endl;
         return os;
-       }
+    }
 
-        char* getKey() const;
-         T getValue() const;
-        void setValue( T value);
-    protected:
+    char* getKey() const;
+    T getValue() const;
+    void setValue( T value);
 
-    private:
 
-        void copyKey(const char* key);
-        char* key;
-        T value;
+private:
+    void copyKey(const char* key);
+    char* key;
+    T value;
+
 };
 
 
@@ -44,6 +44,10 @@ void Pair<T>::copyKey(const char* toCopyKey)
 {
 
     int length=strlen(toCopyKey);
+    if(key)
+    {
+        delete[] key;
+    }
     key=new char[length+1];
     strcpy(key,toCopyKey);
 }
@@ -58,10 +62,10 @@ Pair<T>::Pair()
 
 
 template<class T>
-Pair<T>::Pair(const char* key ,const T &val )
+Pair<T>::Pair(const char* key,const T &val ) : key(nullptr)
 {
     copyKey(key);
-    value=val;
+    setValue(val);
 
 }
 template<class T>
@@ -71,11 +75,11 @@ Pair<T>::~Pair()
 }
 
 template<class T>
-Pair<T>::Pair(const Pair &pair)
+Pair<T>::Pair(const Pair &pair) : key(nullptr)
 {
 
     copyKey(pair.getKey());
-    value=pair.getValue();
+    setValue(pair.getValue());
 
 }
 
@@ -84,8 +88,8 @@ Pair<T>& Pair<T>::operator=(const Pair &pair)
 {
     if(this != &pair)
     {
-       copyKey(pair.getKey());
-       value=pair.getValue();
+        copyKey(pair.getKey());
+        setValue(pair.getValue());
     }
     return *this;
 }
@@ -101,6 +105,11 @@ bool Pair<T>::operator==(const Pair<T> &pair)
     return false;
 }
 
+template<class T>
+bool Pair<T>::operator!=(const Pair<T> &pair)
+{
+    return !(*this==pair);
+}
 
 
 template<class T>

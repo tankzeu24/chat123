@@ -25,54 +25,55 @@ template <class Type>
 class List
 {
 private:
-	Node<Type> *head; //Pointer to the first node in the list
-	int size; //Records the number of nodes in the list
+    Node<Type> *head; //Pointer to the first node in the list
+    int size; //Records the number of nodes in the list
 
 public:
-	// Constructors and Destructors
-	/* Generally every class should have at least two construtors, a
-	 * default constructor and a copy constructor that creates a copy
-	 * of the given object*/
-	List(); //default constructor
-	List(const List& lst); //copy constructor
-	/* Every class should have a destructor, which is responsible for
-	 * cleaning  up any dynamic memory allocation performed by the class.
-	 * Note the special syntax for the destructor */
-	~List();//destructor
-	List& operator=(const List& list);
+    // Constructors and Destructors
+    /* Generally every class should have at least two construtors, a
+     * default constructor and a copy constructor that creates a copy
+     * of the given object*/
+    List(); //default constructor
+    List(const List& lst); //copy constructor
+    /* Every class should have a destructor, which is responsible for
+     * cleaning  up any dynamic memory allocation performed by the class.
+     * Note the special syntax for the destructor */
+    ~List();//destructor
+    List& operator=(const List& list);
     Type& operator[](int index) ;
+    const Type& operator[](int index) const;
     Type getItem(int index) const;
-	// PRE:
-	// POST: A new node containing the given data is inserted at the front
-	//       of the list
-	// PARAM: data is the data to be stored
-	void add(Type data);
+    // PRE:
+    // POST: A new node containing the given data is inserted at the front
+    //       of the list
+    // PARAM: data is the data to be stored
+    void add(Type data);
 
-	// PRE:
-	// POST: A new node containing the given data is inserted at the given
-	//       position in the list
-	// PARAM: pos specifies the (index) position to insert the new node
-	//        data is the data to be stored
-	void insertAt(int pos, Type data);
+    // PRE:
+    // POST: A new node containing the given data is inserted at the given
+    //       position in the list
+    // PARAM: pos specifies the (index) position to insert the new node
+    //        data is the data to be stored
+    void insertAt(int pos, Type data);
 
-	// PRE:
-	// POST: The first incidence of the given data is removed from the list.
-	//       Returns true if data is found (and removed), false otherwise
-	// PARAM: data specifies the data to be removed from the list
-	bool remove(Type data );
+    // PRE:
+    // POST: The first incidence of the given data is removed from the list.
+    //       Returns true if data is found (and removed), false otherwise
+    // PARAM: data specifies the data to be removed from the list
+    bool remove(Type data );
 
-	// PRE:
-	// POST: Empties the list, freeing up dynamically allocated memory
-	// PARAM:
-	void removeAll();
+    // PRE:
+    // POST: Empties the list, freeing up dynamically allocated memory
+    // PARAM:
+    void removeAll();
 
-	/* For Testing Purposes - see note in List.cpp */
-	// PRE:
-	// POST: Prints the contents of the list to the screen, in order
-	// PARAM:
-	void printList();
-	void copyList(const List& list);
-	int getSize() const;
+    /* For Testing Purposes - see note in List.cpp */
+    // PRE:
+    // POST: Prints the contents of the list to the screen, in order
+    // PARAM:
+    void printList();
+    void copyList(const List& list);
+    int getSize() const;
 
 
 
@@ -101,8 +102,8 @@ using namespace std; //needed for cout, cin to be recognised
 template <class Type>
 List<Type>::List()
 {
-	head = NULL;
-	size = 0; //Don't forget to do this!!!
+    head = NULL;
+    size = 0; //Don't forget to do this!!!
 }
 
 /* Copy constructor to copy an existing list.  Note that the compile
@@ -121,7 +122,7 @@ List<Type>::List()
 template <class Type>
 List<Type>::List(const List& lst)
 {
-	copyList(lst);
+    copyList(lst);
 }
 
 /* The destructor is responsible for deleting any memory that was dynamically
@@ -134,7 +135,7 @@ List<Type>::List(const List& lst)
 template <class Type>
 List<Type>::~List()
 {
-	removeAll();
+    removeAll();
 }
 
 template <class Type>
@@ -153,38 +154,38 @@ template<class Type>
 void List<Type>::copyList(const List<Type> &lst)
 {
 
-if (lst.head == NULL)
-	{
-		head = NULL;
-		size = 0;
-	}
-	else
-	{
-		// Copy first node and assign head
-		/* OK, what's with the '->'?  The -> operator accesses the attribute
-		 * or method of the object (or struct) that is refererred to by a
-		 * pointer.  So "head -> data" is the contents of the data variable
-		 * of the object that head points to.  Note that this is synonomous
-		 * with "(*head).data" but the latter syntax is ugly and confusing and
-		 * is therefore rarely used. */
-		head = new Node<Type>;
-		head->data = lst.head->data;
-		/* Now copy the rest of the list.  To do this we'll need to create two
-		 * temporary pointers, one to go through the old list, one node at a
-		 * time, and one to keep pace in the new list, creating new nodes. */
-		Node<Type> *pNewNode = head;
-		Node<Type> *pOldNode = lst.head->next;
-		// Repeat until the entire list is copied
-		while (pOldNode != NULL)
-		{
-			pNewNode->next = new Node<Type>;
-			pNewNode = pNewNode->next;
-			pNewNode->data = pOldNode->data;;
-			pOldNode = pOldNode->next;
-		}
-		pNewNode->next = NULL;
-		size = lst.size;
-	}
+    if (lst.head == NULL)
+    {
+        head = NULL;
+        size = 0;
+    }
+    else
+    {
+        // Copy first node and assign head
+        /* OK, what's with the '->'?  The -> operator accesses the attribute
+         * or method of the object (or struct) that is refererred to by a
+         * pointer.  So "head -> data" is the contents of the data variable
+         * of the object that head points to.  Note that this is synonomous
+         * with "(*head).data" but the latter syntax is ugly and confusing and
+         * is therefore rarely used. */
+        head = new Node<Type>;
+        head->data = lst.head->data;
+        /* Now copy the rest of the list.  To do this we'll need to create two
+         * temporary pointers, one to go through the old list, one node at a
+         * time, and one to keep pace in the new list, creating new nodes. */
+        Node<Type> *pNewNode = head;
+        Node<Type> *pOldNode = lst.head->next;
+        // Repeat until the entire list is copied
+        while (pOldNode != NULL)
+        {
+            pNewNode->next = new Node<Type>;
+            pNewNode = pNewNode->next;
+            pNewNode->data = pOldNode->data;;
+            pOldNode = pOldNode->next;
+        }
+        pNewNode->next = NULL;
+        size = lst.size;
+    }
 }
 
 template<class Type>
@@ -211,8 +212,31 @@ Type& List<Type>::operator[](int index)
         return p->data;
     }
 
-     throw std::invalid_argument("wrong index");
+    throw std::invalid_argument("wrong index");
 }
+
+
+template<class Type>
+const Type& List<Type>::operator[](int index) const
+{
+
+    if(getSize()>=0 && index<=size-1)
+    {
+        int counter=0;
+        Node<Type> *p=head;
+
+        while( !(counter==index) )
+        {
+            p=p->next;
+            counter++;
+        }
+
+        return p->data;
+    }
+
+    throw std::invalid_argument("wrong index");
+}
+
 
 template<class Type>
 Type List<Type>::getItem(int index) const
@@ -229,7 +253,7 @@ Type List<Type>::getItem(int index) const
         }
 
         Type item(p->data);
-         return item;
+        return item;
     }
 
     throw std::invalid_argument("wrong index");
@@ -246,54 +270,54 @@ Type List<Type>::getItem(int index) const
 template <class Type>
 void List<Type>::add(Type x)
 {
-	Node<Type> *p = new Node<Type>; //temporary node
-	// Assign appropriate values to the new node
-	p -> data = x;
-	p -> next = head;
-	// Make the head point to the new node
-	head = p;
-	size++;
+    Node<Type> *p = new Node<Type>; //temporary node
+    // Assign appropriate values to the new node
+    p -> data = x;
+    p -> next = head;
+    // Make the head point to the new node
+    head = p;
+    size++;
 }
 
 // Inserts a new node at the given position (or index) in the list
 template <class Type>
 void List<Type>::insertAt(int pos, Type x)
 {
-	Node<Type> *p;
-	Node<Type> *newNode;
+    Node<Type> *p;
+    Node<Type> *newNode;
 
-	// Check that pos is a valid index
-	if (pos <= size)
-	{
-		newNode = new Node<Type>; //new node
-		newNode->data = x;
+    // Check that pos is a valid index
+    if (pos <= size)
+    {
+        newNode = new Node<Type>; //new node
+        newNode->data = x;
 
-		// Deal with case when item is to be inserted at the head of the list
-		if (pos == 0)
-		{
-			newNode->next = head;
-			head = newNode;
-		}// if(pos == 0)
-		else
-		{
-			p = head;
-			// Move to position BEFORE insertion point
-			for(Type i = 0; i < pos-1; i++)
-			{
-				// Check that p points to a node
-				// Note using exception handling should throw an exception here
-				if(p == NULL)
-				{
-					return;
-				}
-				p = p->next;
-			}//for
-			// Insert node
-			newNode->next = p->next;
-			p->next = newNode;
-		}//else (pos != 0)
-		size++;
-	}//else (pos >= size) do nothing
+        // Deal with case when item is to be inserted at the head of the list
+        if (pos == 0)
+        {
+            newNode->next = head;
+            head = newNode;
+        }// if(pos == 0)
+        else
+        {
+            p = head;
+            // Move to position BEFORE insertion point
+            for(Type i = 0; i < pos-1; i++)
+            {
+                // Check that p points to a node
+                // Note using exception handling should throw an exception here
+                if(p == NULL)
+                {
+                    return;
+                }
+                p = p->next;
+            }//for
+            // Insert node
+            newNode->next = p->next;
+            p->next = newNode;
+        }//else (pos != 0)
+        size++;
+    }//else (pos >= size) do nothing
 }
 
 // Removes the first node containing the given data, returns true
@@ -301,55 +325,55 @@ void List<Type>::insertAt(int pos, Type x)
 template <class Type>
 bool List<Type>::remove(Type x)
 {
-	Node<Type> *p = head;
-	Node<Type> *temp;
-	// Check to see if the list exists
-	if (head == NULL)
-	{
-		return false;
-	}
-		// Check to see if target is at the head of the list
-	else if (head->data == x)
-	{
-		head = head->next;
-		delete p; //currently assigned head
-		size--;
-		return true;
-	}
-		// Otherwise iterate through list
-	else
-	{
-		while(p->next != NULL)
-		{
-			// Check next node for target
-			if(p->next->data == x)
-			{
-				temp = p->next;
-				p->next = p->next->next;
-				size--;
-				delete temp;
-				return true;
-			}
-			p = p->next;
-		}
-	}
-	return false;
+    Node<Type> *p = head;
+    Node<Type> *temp;
+    // Check to see if the list exists
+    if (head == NULL)
+    {
+        return false;
+    }
+    // Check to see if target is at the head of the list
+    else if (head->data == x)
+    {
+        head = head->next;
+        delete p; //currently assigned head
+        size--;
+        return true;
+    }
+    // Otherwise iterate through list
+    else
+    {
+        while(p->next != NULL)
+        {
+            // Check next node for target
+            if(p->next->data == x)
+            {
+                temp = p->next;
+                p->next = p->next->next;
+                size--;
+                delete temp;
+                return true;
+            }
+            p = p->next;
+        }
+    }
+    return false;
 }
 
 template <class Type>
 // Empties the list by deleting each node, starting at the head
 void List<Type>::removeAll()
 {
-	Node<Type> *p = head;
-	// Traverse the list deleting nodes
-	while (p!= NULL)
-	{
-		head = head->next; // Mustn't "lose" the next node
-		delete p; // De-allocate memory
-		p = head; // Go to next node
-	}
-	head = NULL;
-	size = 0;
+    Node<Type> *p = head;
+    // Traverse the list deleting nodes
+    while (p!= NULL)
+    {
+        head = head->next; // Mustn't "lose" the next node
+        delete p; // De-allocate memory
+        p = head; // Go to next node
+    }
+    head = NULL;
+    size = 0;
 }
 
 // Prints the entire list (head first) to the screen - FOR TESTING PURPOSES!
@@ -365,19 +389,19 @@ void List<Type>::removeAll()
 template <class Type>
 void List<Type>::printList()
 {
-	Node<Type> *p = head;
-	cout << "["; //Nice format!
-	// Traverse the list
-	while (p != NULL)
-	{
-		cout << p -> data; // Print data
-		p = p -> next; // Go to next node
-		if (p != NULL)
-		{
-			cout << ","; // Print a comma unless at the end of the list
-		}
-	}
-	cout << "]"; // Don't print a newline - it might not be wanted
+    Node<Type> *p = head;
+    cout << "["; //Nice format!
+    // Traverse the list
+    while (p != NULL)
+    {
+        cout << p -> data; // Print data
+        p = p -> next; // Go to next node
+        if (p != NULL)
+        {
+            cout << ","; // Print a comma unless at the end of the list
+        }
+    }
+    cout << "]"; // Don't print a newline - it might not be wanted
 }
 
 #endif // LIST_H

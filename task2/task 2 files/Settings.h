@@ -8,31 +8,31 @@ using namespace std;
 template<class T>
 class Settings
 {
-    public:
-        Settings();
-        virtual ~Settings();
-        Settings(const Settings &settings);
-        Settings& operator=(const Settings &settings);
+public:
+    Settings();
+    virtual ~Settings();
+    Settings(const Settings &settings);
+    Settings& operator=(const Settings &settings);
 
-        template<class U>
-        friend ostream& operator<<(ostream &os , const Settings<U> &settings);
+    template<class U>
+    friend ostream& operator<<(ostream &os, const Settings<U> &settings);
 
 
 
-        int count() const;
-        void set(const char* key,const T value);
-        bool get(const char* key, T &value);
-    protected:
+    int count() const;
+    void set(const char* key,const T value);
+    bool get(const char* key, T &value);
+protected:
 
-    private:
-        List<Pair<T>> getPairs() const;
-        List<Pair<T>> pairs;
+private:
+    const List<Pair<T>>& getPairs() const;
+    List<Pair<T>> pairs;
 };
 
 
 
 template <class T>
-List<Pair<T>> Settings<T>::getPairs() const
+const List<Pair<T>>& Settings<T>::getPairs() const
 {
     return pairs;
 }
@@ -40,7 +40,6 @@ List<Pair<T>> Settings<T>::getPairs() const
 template <class T>
 Settings<T>::Settings()
 {
-
     pairs=List<Pair<T>>();
 }
 
@@ -49,8 +48,6 @@ Settings<T>::~Settings()
 {
     //dtor
 }
-
-
 
 template <class T>
 Settings<T>::Settings(const Settings<T>  &settings)
@@ -70,12 +67,12 @@ Settings<T>& Settings<T>::operator=(const Settings<T> &settings)
 }
 
 template<class T>
-ostream& operator<<(ostream &os ,const Settings<T> &settings)
+ostream& operator<<(ostream &os,const Settings<T> &settings)
 {
-    os<<"object of type Settings information :"<<endl;
-    for(int i=0;i<settings.getPairs().getSize();i++)
+    os<<"Object of type Settings information :"<<endl;
+    for(int i=0; i<settings.getPairs().getSize(); i++)
     {
-        os<<settings.getPairs().getItem(i);
+        os<<settings.getPairs()[i];
     }
     os<<endl;
     return os;
@@ -93,7 +90,7 @@ void Settings<T>::set(const char* key,const T value)
 {
     bool hasKey=false;
     int index=0;
-    for(int i=0;i<pairs.getSize();i++)
+    for(int i=0; i<pairs.getSize(); i++)
     {
         if(strcmp(pairs[i].getKey(),key)==0)
         {
@@ -117,13 +114,13 @@ void Settings<T>::set(const char* key,const T value)
 template<class T>
 bool Settings<T>::get(const char* key, T& value)
 {
-    for(int i=0;i<pairs.getSize();i++)
+    for(int i=0; i<pairs.getSize(); i++)
     {
-          if(strcmp(pairs[i].getKey(),key)==0)
-          {
+        if(strcmp(pairs[i].getKey(),key)==0)
+        {
             value=pairs[i].getValue();
             return true;
-          }
+        }
 
     }
     return false;

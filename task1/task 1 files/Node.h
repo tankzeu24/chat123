@@ -19,15 +19,15 @@ template <class Type>
 class Node
 {
 public:
-	// Public attributes - Why are the attributes public?
-	Type data;     // The data in the node
-	Node* next;   // Pointer to next node
+    // Public attributes - Why are the attributes public?
+    Type data;     // The data in the node
+    Node* next;   // Pointer to next node
 
-	// Constructors and destructor
-	Node();
-	Node(Type theData);
-	Node(Type theData, Node* theNextNode);
-	~Node();
+    // Constructors and destructor
+    Node();
+    Node(Type theData);
+    Node(Type theData, Node* theNextNode);
+    ~Node();
 
 }; // end Node
 
@@ -44,22 +44,22 @@ public:
 template <class Type>
 Node<Type>::Node()
 {
-	//data = 0; //disable because we can't know if its an int
-	next = NULL;
+    //data = 0; //disable because we can't know if its an int
+    next = NULL;
 }
 
 template <class Type>
 Node<Type>::Node(Type theData)
 {
-	data = theData;
-	next = NULL;
+    data = theData;
+    next = NULL;
 }
 
 template <class Type>
 Node<Type>::Node(Type theData, Node* theNextNode)
 {
-	data = theData;
-	next = theNextNode;
+    data = theData;
+    next = theNextNode;
 }
 
 template <class Type>

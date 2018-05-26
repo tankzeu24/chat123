@@ -12,13 +12,13 @@ Motorcycle::~Motorcycle()
     delete[] type;
 }
 
-Motorcycle::Motorcycle(const char* make,const char* model,const char* color,int year,int mileage,const char* type) :Vehicle(make,model,color,year,mileage) ,type(nullptr)
+Motorcycle::Motorcycle(const char* make,const char* model,const char* color,int year,int mileage,const char* type) :Vehicle(make,model,color,year,mileage),type(nullptr)
 {
     setType(type);
 }
 Motorcycle::Motorcycle(const Motorcycle &motorcycle) : Vehicle(motorcycle),type(nullptr)
 {
-   setType(motorcycle.getType());
+    setType(motorcycle.getType());
 }
 
 Motorcycle& Motorcycle::operator=(const Motorcycle &motorcycle)
@@ -44,5 +44,23 @@ char* Motorcycle::getType() const
 
 void Motorcycle::setType(const char* toCopyType)
 {
+    if(validateType(toCopyType)==false)
+    {
+        throw std::invalid_argument("No matching type found");
+
+    }
     setStringProperty(type,toCopyType);
+
+}
+
+bool Motorcycle::validateType(const char* newType)
+{
+    for(int i=0; i<CONSTANTS_SIZE; i++)
+    {
+        if(strcmp(newType,typeConstants[i])==0)
+        {
+            return true;
+        }
+    }
+    return false;
 }

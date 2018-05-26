@@ -10,38 +10,39 @@ int main()
 
 
 
+    ElectricNet net =ElectricNet(10);
+    cout<<"Is there something in the net? : "<<!net<<endl;
+    cout<<"check one more time with ! operator? : "<<!net<<endl;
 
-ElectricNet net =ElectricNet(10);
+    ElectricDevice stove = ElectricDevice("stove",3);
+    net+=stove;
+    cout<<"There are devices in the net ? : "<<!net<<endl;
+    ElectricDevice lamp = ElectricDevice("lamp",4);
+    net+=lamp;
 
-ElectricDevice a = ElectricDevice("stove",3);
-net+=a;
-ElectricDevice b = ElectricDevice("lamp",4);
-net+=b;
-net-=a;
+    cout<<net<<endl;
+    ElectricDevice fromNet=net["stove"];
+    cout<<"Got this element from the ElectricNet :" <<fromNet<<endl;
 
-cout<<!net<<endl;
-net--;
-net--;
-cout<<net;
-    /*
+    ElectricNet copyNet=net;
+    cout<<copyNet;
+    net-=lamp;
 
-List<int> mylist= List<int>();
-mylist.add(5);
-mylist.add(14);
-mylist.add(30);
-mylist.printList();
+    cout<<"-------"<<endl;
 
-List<int> b=List<int>();
-b.add(99);
-b.printList();
-b=mylist;
+    copyNet++;
+    copyNet+=stove;
+    cout<<net<<endl;
+    cout<<copyNet<<endl;
 
-b.printList();
-b.remove(5);
+    cout<<"-------"<<endl;
 
-mylist.printList();
-b.printList();
+    cout<<"[ Corner case with maxConsumption=3 ] "<<endl;
+    ElectricNet smallNet=ElectricNet(3);
+    smallNet--;
+    cout<<smallNet;
+    smallNet--;
+    cout<<smallNet;
 
-*/
     return 0;
 }

@@ -4,33 +4,35 @@
 #include "ElectricDevice.h"
 class ElectricNet
 {
-    public:
-          ElectricNet();
-        virtual ~ElectricNet();
-        ElectricNet( int maxConsumption);
-        ElectricNet(const ElectricNet &electricNet);
-        ElectricNet& operator=(const ElectricNet &electricNet);
-         int getMaxConsumption() const;
-        List<ElectricDevice> getDevices() const ;
-        ElectricNet& operator+=(const ElectricDevice &electricDevice);
-        ElectricNet& operator+(const ElectricDevice &electricDevice);
-        ElectricNet& operator-=(const ElectricDevice &electricDevice);
-        ElectricNet& operator-(const ElectricDevice &electricDevice);
-        friend ostream& operator<<(ostream& os ,const ElectricNet &electricNet);
-        ElectricDevice& operator[](const char* name);
-        bool operator!();
-        ElectricNet& operator++();
-        ElectricNet operator++(int);
-        ElectricNet& operator--();
-        ElectricNet operator--(int);
-    protected:
+public:
+    ElectricNet();
+    virtual ~ElectricNet();
+    ElectricNet( int maxConsumption);
+    ElectricNet(const ElectricNet &electricNet);
+    ElectricNet& operator=(const ElectricNet &electricNet);
 
-    private:
-        void setConsumption( int newConsumption);
-         int getTotalConsumption() const ;
+    int getMaxConsumption() const;
+    void setMaxConsumpion( int newConsumption);
+    const List<ElectricDevice>& getDevices() const ;
 
-         int maxConsumption;
-        List<ElectricDevice> devices;
+    ElectricNet& operator+=(const ElectricDevice &electricDevice);
+    ElectricNet operator+(const ElectricDevice &electricDevice) const;
+    ElectricNet& operator-=(const ElectricDevice &electricDevice);
+    ElectricNet operator-(const ElectricDevice &electricDevice) const;
+    friend ostream& operator<<(ostream& os,const ElectricNet &electricNet);
+    ElectricDevice& operator[](const char* name);
+    bool operator!();
+    ElectricNet& operator++();
+    ElectricNet operator++(int);
+    ElectricNet& operator--();
+    ElectricNet operator--(int);
+protected:
+
+private:
+
+    int getTotalConsumption() const ;
+    int maxConsumption;
+    List<ElectricDevice> devices;
 
 };
 

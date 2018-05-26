@@ -14,38 +14,21 @@ ElectricDevice::~ElectricDevice()
     delete[] name;
 }
 
-void ElectricDevice::copyName(const char* toCopyName)
+
+
+
+
+ElectricDevice::ElectricDevice(const char* toCopyName,  int toCopyPower )
 {
-    if( toCopyName != NULL)
-    {
-    int length=strlen(toCopyName);
-    name=new char[length+1];
-    strcpy(name,toCopyName);
-    }
-    else
-    {
-        throw std::invalid_argument("No real name passed");
-    }
 
-}
-
-ElectricDevice::ElectricDevice(const char* toCopyName ,  int toCopyPower )
-{
-    if( toCopyPower>0){
-
-
-    consumedPower=toCopyPower;
+    setConsumedPower(toCopyPower);
     copyName(toCopyName);
-    }
-    else
-    {
-         throw std::invalid_argument("The device cannot have power = 0");
-    }
+
 }
 ElectricDevice::ElectricDevice(const ElectricDevice &electricDevice)
 {
 
-    consumedPower=electricDevice.getConsumedPower();
+    setConsumedPower(electricDevice.getConsumedPower());
     copyName(electricDevice.getName());
 }
 
@@ -53,7 +36,7 @@ ElectricDevice& ElectricDevice::operator=(const ElectricDevice &electricDevice)
 {
     if(this != &electricDevice)
     {
-        consumedPower=electricDevice.getConsumedPower();
+        setConsumedPower(electricDevice.getConsumedPower());
         delete[] name;
         copyName(electricDevice.getName());
 
@@ -61,24 +44,50 @@ ElectricDevice& ElectricDevice::operator=(const ElectricDevice &electricDevice)
     return *this;
 }
 
+void ElectricDevice::copyName(const char* toCopyName)
+{
+
+    if(toCopyName==NULL)
+    {
+        throw std::invalid_argument("No real name passed");
+    }
+
+    int length=strlen(toCopyName);
+    name=new char[length+1];
+    strcpy(name,toCopyName);
+
+
+}
+
+
+
 char* ElectricDevice::getName() const
 {
     return name;
 }
- int ElectricDevice::getConsumedPower() const
+int ElectricDevice::getConsumedPower() const
 {
     return consumedPower;
 }
 
 void ElectricDevice::setName(const char* toCopyName)
 {
+    delete[] name;
     copyName(toCopyName);
 }
 
 void ElectricDevice::setConsumedPower(int toCopyConsumedPower)
 {
+
+    if( toCopyConsumedPower<=0 )
+    {
+        throw std::invalid_argument("The device cannot have power <= 0");
+    }
+
     consumedPower=toCopyConsumedPower;
+
 }
+
 
 ostream& operator<<(ostream &os,const ElectricDevice &electricDevice)
 {
@@ -88,7 +97,7 @@ ostream& operator<<(ostream &os,const ElectricDevice &electricDevice)
 
 bool ElectricDevice::operator==(const ElectricDevice &electricDevice)
 {
-    if(strcmp(getName(),electricDevice.getName())==0 && getConsumedPower()==electricDevice.getConsumedPower())
+    if( getConsumedPower()==electricDevice.getConsumedPower() && strcmp(getName(),electricDevice.getName())==0)
     {
         return true;
     }
