@@ -14,7 +14,7 @@ Truck::~Truck()
 
 Truck::Truck(const Truck &truck) : Vehicle(truck)
 {
-    size=truck.getSize();
+    setSize(truck.getSize());
 
 }
 

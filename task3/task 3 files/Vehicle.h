@@ -25,9 +25,9 @@ public:
     void setMileage(int mileage);
 
     virtual void details() const ;
-    void setStringProperty(char *&prop, const char *toCopyString);
-protected:
 
+protected:
+    void setStringProperty(char *&prop, const char *toCopyString);
 private:
 
     char* make;

@@ -7,22 +7,35 @@ using namespace std;
 #include "Truck.h"
 int main()
 {
-    Car c;
+
+    Vehicle defaultVehicle;
+    cout<<"Default vehicle : (expected nothing) "<<endl;
+    defaultVehicle.details();
     cout<<"Default car : "<<endl;
-    c.details(); //shows default values
+     Car defaultCar;
+    defaultCar.details(); //shows default values
+    cout<<"Default truck : "<<endl;
+    Truck defaultTruck;
+    defaultTruck.details();
+    cout<<"Default motorcycle : " <<endl;
+    Motorcycle defaultMotorcycle;
+    defaultMotorcycle.details();
+     cout<<"=========="<<endl;
 
-    Car c1=Car("Porche","Best","Red",2000,100);
-    c1.details(); //shows the details
+    Vehicle v=Vehicle("some Model","some brand","some color",1999,99);
+    v.details(); //expected nothing in the console
+    Car car=Car("Porche","Best","Red",2000,100);
+    car.details(); //shows the details
 
-    Truck t=Truck("KMZ","Top","Blue",1990,50,200);
-    t.details();
+    Truck truck=Truck("KMZ","Top","Blue",1990,50,200);
+    truck.details();
 
-    Motorcycle m=Motorcycle("Raider","nice","Green",2001,20,"touring");
-    m.details();
+    Motorcycle motorcycle=Motorcycle("BMX","nice","Green",2001,20,"touring");
+    motorcycle.details();
 
     cout<<"=========="<<endl;
     cout<<"Example using virtual function : "<<endl;
-    Vehicle* vehicles[]= {&c,&c1,&t,&m};
+    Vehicle* vehicles[]= {&v,&car,&truck,&motorcycle};
     for(int i=0; i<4; i++)
     {
         vehicles[i]->details();

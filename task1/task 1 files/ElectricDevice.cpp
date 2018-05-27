@@ -3,10 +3,10 @@
 
 
 
-ElectricDevice::ElectricDevice()
+ElectricDevice::ElectricDevice() : name(nullptr)
 {
     consumedPower=1;
-    copyName("Default Name");
+    setStringProperty(name,"NoName");
 }
 
 ElectricDevice::~ElectricDevice()
@@ -15,21 +15,18 @@ ElectricDevice::~ElectricDevice()
 }
 
 
-
-
-
-ElectricDevice::ElectricDevice(const char* toCopyName,  int toCopyPower )
+ElectricDevice::ElectricDevice(const char* toCopyName, int toCopyPower) : name(nullptr)
 {
 
     setConsumedPower(toCopyPower);
-    copyName(toCopyName);
+    setStringProperty(name,toCopyName);
 
 }
-ElectricDevice::ElectricDevice(const ElectricDevice &electricDevice)
+ElectricDevice::ElectricDevice(const ElectricDevice &electricDevice) : name(nullptr)
 {
 
     setConsumedPower(electricDevice.getConsumedPower());
-    copyName(electricDevice.getName());
+    setStringProperty(name,electricDevice.getName());
 }
 
 ElectricDevice& ElectricDevice::operator=(const ElectricDevice &electricDevice)
@@ -37,26 +34,10 @@ ElectricDevice& ElectricDevice::operator=(const ElectricDevice &electricDevice)
     if(this != &electricDevice)
     {
         setConsumedPower(electricDevice.getConsumedPower());
-        delete[] name;
-        copyName(electricDevice.getName());
+        setStringProperty(name,electricDevice.getName());
 
     }
     return *this;
-}
-
-void ElectricDevice::copyName(const char* toCopyName)
-{
-
-    if(toCopyName==NULL)
-    {
-        throw std::invalid_argument("No real name passed");
-    }
-
-    int length=strlen(toCopyName);
-    name=new char[length+1];
-    strcpy(name,toCopyName);
-
-
 }
 
 
@@ -72,8 +53,7 @@ int ElectricDevice::getConsumedPower() const
 
 void ElectricDevice::setName(const char* toCopyName)
 {
-    delete[] name;
-    copyName(toCopyName);
+    setStringProperty(name,toCopyName);
 }
 
 void ElectricDevice::setConsumedPower(int toCopyConsumedPower)
@@ -109,4 +89,16 @@ bool ElectricDevice::operator!=(const ElectricDevice &electricDevice)
     return !(*this==electricDevice);
 }
 
+
+void ElectricDevice::setStringProperty(char *&prop, const char *toCopyString)
+{
+    if(toCopyString==NULL)
+    {
+        throw std::invalid_argument("Cannot set name equal to NULL");
+    }
+    delete[] prop;
+    prop = new char[strlen(toCopyString)+1];
+    strcpy(prop, toCopyString);
+
+}
 

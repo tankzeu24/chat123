@@ -7,7 +7,7 @@
 
 ElectricNet::ElectricNet()
 {
-    maxConsumption=100;
+    setMaxConsumpion(100);
     devices=List<ElectricDevice>();
 }
 
@@ -95,11 +95,17 @@ ElectricNet& ElectricNet::operator+=(const ElectricDevice &electricDevice)
 
 ElectricNet ElectricNet::operator+(const ElectricDevice &electricDevice) const
 {
-    ElectricNet item(*this);
-    item+=electricDevice;
-    return item;
+    ElectricNet newNet(*this);
+    newNet+=electricDevice;
+    return newNet;
 }
 
+ElectricNet operator+(const ElectricDevice &electricDevice,const ElectricNet &electricNet)
+{
+    ElectricNet newNet(electricNet);
+    newNet+=electricDevice;
+    return newNet;
+}
 
 ElectricNet& ElectricNet::operator-=(const ElectricDevice &electricDevice)
 {
@@ -119,10 +125,18 @@ ElectricNet& ElectricNet::operator-=(const ElectricDevice &electricDevice)
 ElectricNet ElectricNet::operator-(const ElectricDevice &electricDevice) const
 {
 
-    ElectricNet electricNet(*this);
-    electricNet-=electricDevice;
-    return electricNet;
+    ElectricNet newNet(*this);
+    newNet-=electricDevice;
+    return newNet;
 }
+
+ElectricNet operator-(const ElectricDevice &electricDevice,const ElectricNet &electricNet)
+{
+    ElectricNet newNet(electricNet);
+    newNet-=electricDevice;
+    return newNet;
+}
+
 
 ostream& operator<<(ostream &os,const ElectricNet &electricNet)
 {

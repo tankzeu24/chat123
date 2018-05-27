@@ -22,7 +22,7 @@ public:
     int count() const;
     void set(const char* key,const T value);
     bool get(const char* key, T &value);
-protected:
+
 
 private:
     const List<Pair<T>>& getPairs() const;

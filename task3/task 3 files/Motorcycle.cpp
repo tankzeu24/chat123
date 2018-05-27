@@ -4,7 +4,7 @@
 
 Motorcycle::Motorcycle() : Vehicle(),type(nullptr)
 {
-    setType("No Type");
+    setType("touring");
 }
 
 Motorcycle::~Motorcycle()
@@ -34,7 +34,6 @@ Motorcycle& Motorcycle::operator=(const Motorcycle &motorcycle)
 void Motorcycle::details() const
 {
     cout<<"Motorcycle with :"<<(const Vehicle&)*this<<","<<getType()<<endl;
-
 
 }
 char* Motorcycle::getType() const

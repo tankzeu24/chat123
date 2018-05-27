@@ -26,7 +26,7 @@ public:
 
     char* getKey() const;
     T getValue() const;
-    void setValue( T value);
+    void setValue( T newValue);
 
 
 private:
@@ -42,19 +42,19 @@ private:
 template<class T>
 void Pair<T>::copyKey(const char* toCopyKey)
 {
-
-    int length=strlen(toCopyKey);
-    if(key)
+    if(toCopyKey==NULL)
     {
-        delete[] key;
+        throw std::invalid_argument("Cannot set name equal to NULL");
     }
+
+    delete[] key;
+    int length=strlen(toCopyKey);
     key=new char[length+1];
     strcpy(key,toCopyKey);
 }
 template<class T>
-Pair<T>::Pair()
+Pair<T>::Pair() : key(nullptr)
 {
-
     copyKey("default key");
 
 }
@@ -125,8 +125,8 @@ T Pair<T>::getValue() const
 }
 
 template<class T>
-void Pair<T>::setValue(T val)
+void Pair<T>::setValue(T newValue)
 {
-    value=val;
+    value=newValue;
 }
 #endif // PAIR_H

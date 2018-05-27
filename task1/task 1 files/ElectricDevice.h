@@ -24,7 +24,7 @@ public:
 
 
 private:
-    void copyName(const char* name);
+    void setStringProperty(char *&prop, const char *toCopyString);
     char* name;
     int consumedPower;
 

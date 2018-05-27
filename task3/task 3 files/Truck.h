@@ -12,13 +12,15 @@ public:
     Truck(const Truck &truck);
     Truck(const char* make,const char* model,const char* color,int year,int mileage,int size);
     Truck& operator=(const Truck &trick);
+
     void details() const;
 
-protected:
-
-private:
     int getSize() const;
     void setSize(int sizeToCopy);
+
+
+
+private:
     int size;
 };
 

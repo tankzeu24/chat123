@@ -17,8 +17,10 @@ public:
 
     ElectricNet& operator+=(const ElectricDevice &electricDevice);
     ElectricNet operator+(const ElectricDevice &electricDevice) const;
+    friend  ElectricNet operator+(const ElectricDevice &electricDevice,const ElectricNet &electricNet);
     ElectricNet& operator-=(const ElectricDevice &electricDevice);
     ElectricNet operator-(const ElectricDevice &electricDevice) const;
+    friend  ElectricNet operator-(const ElectricDevice &electricDevice,const ElectricNet &electricNet);
     friend ostream& operator<<(ostream& os,const ElectricNet &electricNet);
     ElectricDevice& operator[](const char* name);
     bool operator!();
@@ -35,5 +37,7 @@ private:
     List<ElectricDevice> devices;
 
 };
+
+
 
 #endif // ELECTRICNET_H
