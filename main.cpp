@@ -6,8 +6,11 @@ using namespace std;
 #include "Bank.h"
 
 
-
-void case2(Bank &bank)
+void listCustomers(Bank &bank)
+{
+ bank.listCustomers();
+}
+void addNewCustomer(Bank &bank)
 {
     int id;
     cout<<"Enter id"<<endl;
@@ -23,7 +26,7 @@ void case2(Bank &bank)
 
 }
 
-void case3(Bank &bank)
+void deleteCustomer(Bank &bank)
 {
     int id;
     cout<<"Enter customer id to delete"<<endl;
@@ -31,8 +34,12 @@ void case3(Bank &bank)
     bank.deleteCustomer(id);
 }
 
+void listAllAccounts(Bank &bank)
+{
+    bank.listAccounts();
+}
 
-void case5(Bank &bank)
+void listCustomerAccounts(Bank &bank)
 {
     int id;
     cout<<"enter id "<<endl;
@@ -40,7 +47,7 @@ void case5(Bank &bank)
     bank.listCustomerAccount(id);
 }
 
-void case6(Bank &bank)
+void addnewAccount(Bank &bank)
 {
 
     string accType;
@@ -87,7 +94,7 @@ void case6(Bank &bank)
 }
 
 
-void case7(Bank &bank)
+void deleteAccount(Bank &bank)
 {
     int iban;
     cout<<"enter IBAN"<<endl;
@@ -95,7 +102,7 @@ void case7(Bank &bank)
     bank.deleteAccount(iban);
 
 }
-void case8(Bank &bank)
+void withdrawFromAccount(Bank &bank)
 {
     int iban;
     double amount;
@@ -106,7 +113,7 @@ void case8(Bank &bank)
     bank.withdrawlFromAccount(iban,amount);
 }
 
-void case9(Bank &bank)
+void depositToAccount(Bank &bank)
 {
     int iban;
     double amount;
@@ -117,7 +124,7 @@ void case9(Bank &bank)
     bank.depositToAccount(iban,amount);
 }
 
-void case10(Bank &bank)
+void tansfer(Bank &bank)
 {
     int fromIBAN,toIBAN;
     double amount;
@@ -130,7 +137,7 @@ void case10(Bank &bank)
     bank.transfer(fromIBAN,toIBAN,amount);
 }
 
-void case11(Bank &bank)
+void DisplayInfoForTheBank(Bank &bank)
 {
     bank.details();
 }
@@ -162,37 +169,37 @@ int main()
         switch(option)
         {
         case 1:
-            bank.listCustomers();
+            listCustomers(bank);
             break;
         case 2:
-            case2(bank);
+            addNewCustomer(bank);
             break;
         case 3:
-            case3(bank);
+            deleteCustomer(bank);
             break;
         case 4:
-            bank.listAccounts();
+            listAllAccounts(bank);
             break;
         case 5:
-            case5(bank);
+            listCustomerAccounts(bank);
             break;
         case 6:
-            case6(bank);
+            addnewAccount(bank);
             break;
         case 7:
-            case7(bank);
+            deleteAccount(bank);
             break;
         case 8:
-            case8(bank);
+            withdrawFromAccount(bank);
             break;
         case 9:
-            case9(bank);
+            depositToAccount(bank);
             break;
         case 10:
-            case10(bank);
+            tansfer(bank);
             break;
         case 11:
-            case11(bank);
+            DisplayInfoForTheBank(bank);
             break;
         case 12:
             exit(0);
