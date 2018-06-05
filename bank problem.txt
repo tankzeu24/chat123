@@ -1,0 +1,107 @@
+Write a program that models bank system and the operations the bank does , for this purpose
+make the classes from the UML diagram below:
+
+https://imgur.com/a/bYxJmGL
+
+
+1.class Customer
+- id - number of the user
+-name 
+-address
+
+Methods:
+-constructor with parameters
+-selectors : getId,getName,getAddress
+-display- prints the information about the user
+-additional methods if neccessary
+
+2.make abstract class Account
+-iban- a number of a bank account(IBAN)
+-ownerid- id of the owner of the account
+-amount -
+
+methods;
+-constructor with parameters
+-pure virtual function deposit- for adding sum into the bank account
+-pure virtual method withdraw-for withdrawing sum from the bank account
+if this is possible ,the method returns true or false
+-pure virtual method display - prints information about the account
+-getBalance-returns the amount of money in the account
+-additional methods if neccessary
+
+3.Make the following derived methods:
+
+3.1 CurrentAccount (inherits Account)
+-deposit - adding sum into the bank account
+-withdraw-withdrawing money from the account ,If there are less money 
+than the required sum for withdrawing return false ,else return true and decrease
+the amount of money in the account
+-display - print in the following order - type of the account,IBAN,id of the user,balance
+-additional methods if neccessary
+
+3.2 class Savings (inherits Account)
+-has property interestRate;
+
+methods:
+-getInterestRate- returns interestRate;
+-deposit - adds money into the accouunt
+-withdraw-withdrawing money from the account ,If there are less money 
+than the required sum for withdrawing return false ,else return true and decrease
+the amount of money in the account
+-display - print in the following order - type of the account,IBAN,interestRate,id of the user,balance
+-additional methods if neccessary
+
+
+3,3 class PivilegeAccount( inherits Account)
+-has property overdraft
+
+methods:
+-getOverDraft-returns overdraft;
+-deposit - adds money into the account
+-withdraw- withdrawing money from the account if the current sum+overdraft<  the sum you want 
+withdrawl returns false ,else decrease the sum of the account with the sum you wanted
+and returns true(in this case the balance of the account can be negative number)
+-display - print in the following order - type of the account,IBAN,id of the user,overdraft,balance
+-additional methods if neccessary
+
+4.class Bank
+
+-name
+-address
+-customers - list of customers
+-accounts - list of accounts
+
+methods:
+-constructor with parameters
+-selectors getName,getAddress
+-addCustomer with parameters customerId,name,address-if a user does not exist
+with customerId,creates a new user and adds it to the "customers" list
+listCustomers-print customers
+-deleteCustomer with parameter customerId-deletes user with customerId from the 
+"customer" list and all his bank accounts
+-addAccount with paramter accountType,iban,ownerId,amount-
+creates new account  from the type given by accountType and adds it to the 
+list of bank accounts.If a user with ownerID does not exist OR 
+exists a bank account with the same IBAN -exception is thrown
+-deleteaccount with parameter iban-deletes an account having that iban
+-listCustomerAccount with parameter customerId- prints information about 
+all acounts of the user with customerId parameter
+transfer with parameters fromIBAN,toIBAN,amount - sends money 
+from account with iban=fromIBAN to account with iban equal to toIBAN if possible
+-display prints info about the bank and the total number of users and accounts
+-additional methods if neccessary
+
+5.In the main() method create a bank and the following menu:
+
+1 List customers
+2 Add new customer
+3 Delete customer
+4 List all accounts
+5 List customer accounts
+6 Add new account
+7 Delete account
+8 Withdraw from account
+9 Deposit to account
+10 Transfer
+11 Display info for the bank
+12 Quit
