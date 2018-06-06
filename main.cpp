@@ -143,7 +143,7 @@ void DisplayInfoForTheBank(Bank &bank)
 }
 int main()
 {
-    Bank bank =Bank("BNB bank","Main street 34");
+    Bank bank ("BNB bank","Main street 34");
 
     while(true)
     {

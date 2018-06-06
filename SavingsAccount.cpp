@@ -4,9 +4,9 @@ using namespace std;
 #include "Account.h"
 
 
-SavingsAccount::SavingsAccount(): Account()
+SavingsAccount::SavingsAccount(): Account(),interestRate(0.0)
 {
-    interestRate=0.0;
+
 }
 SavingsAccount::SavingsAccount(int newIban,int newOwner,double newAmount,double newInterestRate) :Account(newIban,newOwner,newAmount)
 {

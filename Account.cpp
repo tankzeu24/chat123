@@ -82,11 +82,7 @@ double Account::getBalance() const
 }
 
 
-ostream& operator<<(ostream &os,const Account &account)
-{
-    os<<"IBAN : " <<account.getIban()<< ", OwnerID : "<<account.getOwner()<< ", Balance: "<<account.getBalance()<<endl;
-    return os;
-}
+
 
 void Account::setUnlimitedBalance(double newAmount)
 {

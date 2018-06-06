@@ -2,7 +2,7 @@
 #include "CurrentAccount.h"
 #include "PivilegeAccount.h"
 #include "SavingsAccount.h"
-
+#include<algorithm>
 
 Bank::Bank(string newName,string newAddress,list<Customer*> newCustomers,list<Account*> newAccounts)
 {
@@ -14,7 +14,17 @@ Bank::Bank(string newName,string newAddress,list<Customer*> newCustomers,list<Ac
 
 Bank::~Bank()
 {
-    //dtor
+    for(list<Customer*>::const_iterator it = customers.begin(); it != customers.end(); ++it)
+    {
+        delete *it;
+    }
+    customers.clear();
+
+    for(list<Account*>::const_iterator it = accounts.begin(); it != accounts.end(); ++it)
+    {
+        delete *it;
+    }
+    accounts.clear();
 }
 
 
@@ -55,17 +65,11 @@ void Bank::addCustomer(int customerId,string name,string address)
 {
 
 
-    bool existsCustomer=false;
-
-    for( auto const& customer : customers)
+    bool customerExists = any_of(customers.begin(), customers.end(), [&](const Customer* c)
     {
-        if(customer->getId()==customerId )
-        {
-            existsCustomer=true;
-            break;
-        }
-    }
-    if(existsCustomer==false)
+        return (*c).getId() == customerId;
+    });
+    if(customerExists==false)
     {
         customers.push_back(new Customer(customerId,name,address));
     }
@@ -85,11 +89,11 @@ void Bank::deleteCustomer(int customerId)
 {
 
 
-    accounts.remove_if([&](Account *account)
+    customers.remove_if([&](Customer *customer)
     {
-        if (account->getOwner() == customerId)
+        if (customer->getId() == customerId)
         {
-            delete account;
+            delete customer;
             return true;
         }
         else
@@ -111,40 +115,32 @@ void Bank::deleteCustomer(int customerId)
             return false;
         }
     });
+
 
 }
 
 void Bank::addAccount(string accountType,int iban,int ownerid,double amount,double additionalParameter)
 {
 
-    bool userExists=false;
-    for( auto const& customer : customers)
+    bool customerExists = any_of(customers.begin(), customers.end(), [&](const Customer* c)
     {
-        if(customer->getId()==ownerid)
-        {
-            userExists=true;
-            break;
-        }
-    }
-
-    if(userExists==false)
+        return (*c).getId() == ownerid;
+    });
+    if(customerExists==false)
     {
         throw std::invalid_argument("Not existing user with given ownerid exception !");
     }
 
-    bool bankAccountExists=false;
-    for( auto const& account: accounts)
+
+    bool bankAccountExists = any_of(accounts.begin(), accounts.end(), [&](const Account* c)
     {
-        if(account->getIban() ==iban)
-        {
-            bankAccountExists=true;
-            break;
-        }
-    }
+        return (*c).getIban() == iban;
+    });
     if(bankAccountExists==true)
     {
         throw std::invalid_argument("Already exists bank account with that IBAN");
     }
+
     createAccount(accountType,iban,ownerid,amount,additionalParameter);
 }
 
@@ -187,14 +183,14 @@ void Bank::listCustomerAccount(int customerId) const
 void Bank::withdrawlFromAccount(int fromIBAN,double amount)
 {
 
-    for(list<Account*>::iterator acc =accounts.begin() ; acc != accounts.end(); ++acc)
-    {
 
-        if( (*acc)->getIban()==fromIBAN)
-        {
-            (*acc)->withdraw(amount);
-            break;
-        }
+    std::list<Account*>::iterator foundAccount = find_if(accounts.begin(), accounts.end(), [&](const Account* c)
+    {
+        return (*c).getIban() == fromIBAN;
+    });
+    if(foundAccount!=accounts.end())
+    {
+        (*foundAccount)->withdraw(amount);
     }
 
 }
@@ -202,15 +198,16 @@ void Bank::withdrawlFromAccount(int fromIBAN,double amount)
 void Bank::depositToAccount(int toIBAN,double amount)
 {
 
-    for(list<Account*>::iterator acc =accounts.begin() ; acc != accounts.end(); ++acc)
-    {
 
-        if( (*acc)->getIban()==toIBAN)
-        {
-            (*acc)->deposit(amount);
-            break;
-        }
+    std::list<Account*>::iterator foundAccount = find_if(accounts.begin(), accounts.end(), [&](const Account* c)
+    {
+        return (*c).getIban() == toIBAN;
+    });
+    if(foundAccount!=accounts.end())
+    {
+        (*foundAccount)->deposit(amount);
     }
+
 
 }
 
@@ -218,43 +215,23 @@ void Bank::depositToAccount(int toIBAN,double amount)
 void Bank::transfer(int fromIBAN,int toIBAN,double amount)
 {
 
-
-    Account* firstAccount;
-    Account* secondAccount;
-    for(list<Account*>::iterator acc =accounts.begin() ; acc != accounts.end(); ++acc)
+    std::list<Account*>::iterator fromAccount = find_if(accounts.begin(), accounts.end(), [&](const Account* c)
     {
-
-        if( (*acc)->getIban()==fromIBAN)
-        {
-
-            firstAccount=*acc;
-
-
-        }
-    }
-
-    for(list<Account*>::iterator acc =accounts.begin() ; acc != accounts.end(); ++acc)
+        return (*c).getIban() == fromIBAN;
+    });
+    std::list<Account*>::iterator toAccount = find_if(accounts.begin(), accounts.end(), [&](const Account* c)
     {
+        return (*c).getIban() == toIBAN;
+    });
 
-        if( (*acc)->getIban()==toIBAN)
-        {
-
-            secondAccount=*acc;
-
-        }
-    }
-
-    if(firstAccount!= nullptr && secondAccount !=nullptr)
+    if(fromAccount !=accounts.end() && toAccount != accounts.end())
     {
-
-        bool operationState= firstAccount->withdraw(amount);
+        bool operationState=(*fromAccount)->withdraw(amount);
         if(operationState==true)
         {
-            secondAccount->deposit(amount);
+            (*toAccount)->deposit(amount);
         }
-
     }
-
 
 
 
@@ -295,19 +272,6 @@ list<Account*> Bank::getAccounts() const
 }
 
 
-ostream& operator<<(ostream &os,const Bank &bank)
-{
-    os<<bank.getName()<<" "<<bank.getAddress()<<endl;
-    for( auto const& acc : bank.getAccounts())
-    {
-        acc->display();
-    }
-    for( auto const& customer : bank.getCustomers())
-    {
-        customer->display();
-    }
-    return os;
-}
 
 
 void Bank::details() const

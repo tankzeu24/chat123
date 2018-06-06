@@ -4,9 +4,9 @@ using namespace std;
 #include "Account.h"
 
 
-PivilegeAccount::PivilegeAccount() :Account()
+PivilegeAccount::PivilegeAccount() :Account() ,overdraft(0.0)
 {
-    overdraft=0.0;
+
 }
 
 PivilegeAccount::PivilegeAccount(int newIban,int newOwner,double newAmount,double newOverdraft):Account(newIban,newOwner,newAmount)
@@ -52,7 +52,7 @@ bool PivilegeAccount::withdraw(double newAmount)
         return false;
     }
 
-    setUnlimitedBalance(getBalance()-newAmount);
+    setUnlimitedBalance(newAmount);
     return true;
 
 }
