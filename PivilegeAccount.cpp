@@ -60,11 +60,8 @@ bool PivilegeAccount::withdraw(double newAmount)
 
 
 void PivilegeAccount::display() const
-
 {
-
-    cout<<"PivilegeAccount IBAN: " << getIban()<< " Owner: "<<getOwner()<<" Overdraft: "<<getOverdraft()<< " Balance: "<<getBalance()<<endl;
-
+    cout<<"PivilegeAccount ,IBAN: " << getIban()<< " ,Owner: "<<getOwner()<<" ,Overdraft: "<<getOverdraft()<< " ,Balance: "<<getBalance()<<endl;
 
 }
 

@@ -55,7 +55,7 @@ void SavingsAccount::display() const
 
 {
 
-    cout<<"SavingsAccount IBAN: " << getIban()<< " owner : "<<getOwner()<< " Interest Rate : "<<getInterestRate()<< " Balance : "<<getBalance()<<endl;
+    cout<<"SavingsAccount , IBAN: " << getIban()<< " ,Owner : "<<getOwner()<< " ,Interest Rate : "<<getInterestRate()<< " ,Balance : "<<getBalance()<<endl;
 
 
 }

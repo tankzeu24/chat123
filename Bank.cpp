@@ -65,9 +65,9 @@ void Bank::addCustomer(int customerId,string name,string address)
 {
 
 
-    bool customerExists = any_of(customers.begin(), customers.end(), [&](const Customer* c)
+    bool customerExists = any_of(customers.begin(), customers.end(), [&](const Customer* customer)
     {
-        return (*c).getId() == customerId;
+        return (*customer).getId() == customerId;
     });
     if(customerExists==false)
     {
@@ -122,9 +122,9 @@ void Bank::deleteCustomer(int customerId)
 void Bank::addAccount(string accountType,int iban,int ownerid,double amount,double additionalParameter)
 {
 
-    bool customerExists = any_of(customers.begin(), customers.end(), [&](const Customer* c)
+    bool customerExists = any_of(customers.begin(), customers.end(), [&](const Customer* customer)
     {
-        return (*c).getId() == ownerid;
+        return (*customer).getId() == ownerid;
     });
     if(customerExists==false)
     {
@@ -132,9 +132,9 @@ void Bank::addAccount(string accountType,int iban,int ownerid,double amount,doub
     }
 
 
-    bool bankAccountExists = any_of(accounts.begin(), accounts.end(), [&](const Account* c)
+    bool bankAccountExists = any_of(accounts.begin(), accounts.end(), [&](const Account* account)
     {
-        return (*c).getIban() == iban;
+        return (*account).getIban() == iban;
     });
     if(bankAccountExists==true)
     {
@@ -183,7 +183,6 @@ void Bank::listCustomerAccount(int customerId) const
 void Bank::withdrawlFromAccount(int fromIBAN,double amount)
 {
 
-
     std::list<Account*>::iterator foundAccount = find_if(accounts.begin(), accounts.end(), [&](const Account* c)
     {
         return (*c).getIban() == fromIBAN;
@@ -197,7 +196,6 @@ void Bank::withdrawlFromAccount(int fromIBAN,double amount)
 
 void Bank::depositToAccount(int toIBAN,double amount)
 {
-
 
     std::list<Account*>::iterator foundAccount = find_if(accounts.begin(), accounts.end(), [&](const Account* c)
     {

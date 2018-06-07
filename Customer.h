@@ -17,8 +17,8 @@ public:
     string getName() const;
     string getAddress() const;
     void display() const;
+    void setId(int newId);
 
-protected:
 
 private:
     int id;

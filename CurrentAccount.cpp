@@ -42,7 +42,7 @@ void CurrentAccount::deposit(double newAmount)
 
 bool CurrentAccount::withdraw(double withdrawAmount)
 {
-    if( withdrawAmount <=0 || (getBalance() -withdrawAmount)<0 )
+    if( withdrawAmount <=0 || (getBalance() - withdrawAmount)<0 )
     {
         return false;
     }
@@ -52,10 +52,6 @@ bool CurrentAccount::withdraw(double withdrawAmount)
 
 
 void CurrentAccount::display() const
-
 {
-
-    cout<<"CurrentAccount IBAN: "<<getIban()<<" Owner: "<<getOwner()<<" Balance: "<<getBalance()<<endl;
-
-
+    cout<<"CurrentAccount , IBAN: "<<getIban()<<", Owner: "<<getOwner()<<" , Balance: "<<getBalance()<<endl;
 }

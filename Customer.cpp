@@ -2,7 +2,7 @@
 
 Customer::Customer(int newId,string newName,string newAddress)
 {
-    id=newId;
+    setId(newId);
     name=newName;
     address=newAddress;
 }
@@ -14,7 +14,7 @@ Customer::~Customer()
 
 Customer::Customer(const Customer &customer)
 {
-    id=customer.getId();
+    setId(customer.getId());
     name=customer.getName();
     address=customer.getAddress();
 }
@@ -23,7 +23,7 @@ Customer& Customer::operator=(const Customer &customer)
 {
     if( this != &customer)
     {
-        id=customer.getId();
+       setId(customer.getId());
         name=customer.getName();
         address=customer.getAddress();
     }
@@ -34,6 +34,15 @@ Customer& Customer::operator=(const Customer &customer)
 int Customer::getId() const
 {
     return id;
+}
+
+void Customer::setId(int newId)
+{
+    if(newId<=0)
+    {
+          throw std::invalid_argument("Non-positive id parameter exception");
+    }
+    id=newId;
 }
 
 string Customer::getName() const

@@ -32,7 +32,7 @@ public:
 
 protected:
     void depositHelper(double amount);
-    void  setUnlimitedBalance(double newAmount);
+    void setUnlimitedBalance(double newAmount);
 private:
 
     int iban;

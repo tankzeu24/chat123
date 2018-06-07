@@ -39,7 +39,7 @@ void Account::setIban(int newIban)
 {
     if(newIban<=0)
     {
-        throw std::invalid_argument("Cannot set iban <=0");
+        throw std::invalid_argument("Cannot set IBAN to a number <=0");
     }
     iban=newIban;
 }
@@ -48,7 +48,7 @@ void Account::setOwner(int newOwner)
 {
     if(newOwner<=0)
     {
-        throw std::invalid_argument("Cannot set owner to <=0");
+        throw std::invalid_argument("Cannot set ownerID to number <=0");
     }
     owner=newOwner;
 
@@ -56,7 +56,7 @@ void Account::setOwner(int newOwner)
 
 void Account::setBalance(double newAmount)
 {
-    if(newAmount<0)
+    if(newAmount<0.0)
     {
         throw std::invalid_argument("Cannot set balance to <0");
     }
@@ -86,6 +86,10 @@ double Account::getBalance() const
 
 void Account::setUnlimitedBalance(double newAmount)
 {
+    if(newAmount<=0)
+    {
+        throw std::invalid_argument("Cannot deposit amount <=0");
+    }
     amount-=newAmount;
 }
 
