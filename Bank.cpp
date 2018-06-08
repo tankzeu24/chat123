@@ -42,8 +42,6 @@ Bank::Bank(const Bank &bank)
         accounts.push_back(account->copy());
     }
 
-
-
 }
 
 Bank& Bank::operator=(const Bank &bank)
@@ -289,7 +287,6 @@ void Bank::createAccount(string accountType,int iban,int ownerid,double amount,d
     else if (accountType=="SavingsAccount")
     {
         toAddAccount=new SavingsAccount(iban,ownerid,amount,overdraftOrInterest);
-
     }
     else
     {

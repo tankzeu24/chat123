@@ -11,10 +11,14 @@ public:
     virtual ~Menu();
 
     void start() ;
+
     void displayMainMenu() const ;
-    void chooseOptionFromMenu()  const ;
 
 
+//since menu's serves as UI let this be it's only option
+// everything else should be hidden
+private:
+    void chooseOption();
     void listCustomers() const;
     void addNewCustomer();
     void deleteCustomer();
@@ -25,12 +29,12 @@ public:
     void withdrawFromAccount();
     void depositToAccount();
     void tansfer();
-    void DisplayInfoForTheBank() const;
-
+    void displayInfoForTheBank() const;
     Bank getBank() const;
-protected:
 
-private:
+
+
+
     Bank bank;
 };
 

@@ -2,7 +2,7 @@
 
 Menu::Menu()
 {
-   bank=Bank();
+    bank=Bank();
 }
 
 Menu::~Menu()
@@ -19,9 +19,75 @@ Menu& Menu::operator=(const Menu &menu)
 {
     if(this != &menu)
     {
-          bank=menu.getBank();
+        bank=menu.getBank();
     }
     return *this;
+}
+
+void Menu::displayMainMenu() const
+{
+    cout<<endl;
+    cout<<"1 List customers"<<endl;
+    cout<<"2 Add new customer"<<endl;
+    cout<<"3 Delete customer"<<endl;
+    cout<<"4 List all accounts"<<endl;
+    cout<<"5 List customer accounts"<<endl;
+    cout<<"6 Add new account"<<endl;
+    cout<<"7 Delete  Account"<<endl;
+    cout<<"8 Withdraw from account"<<endl;
+    cout<<"9 Deposit to account"<<endl;
+    cout<<"10 Transfer"<<endl;
+    cout<<"11 Display info for the bank"<<endl;
+    cout<<"12 Quit"<<endl;
+    cout<<endl;
+}
+
+
+void Menu::chooseOption()
+{
+    int option;
+    cout<<"Enter option :"<<endl;
+    cin>>option;
+    switch(option)
+    {
+    case 1:
+        listCustomers();
+        break;
+    case 2:
+        addNewCustomer();
+        break;
+    case 3:
+        deleteCustomer();
+        break;
+    case 4:
+        listAllAccounts();
+        break;
+    case 5:
+        listCustomerAccounts();
+        break;
+    case 6:
+        addnewAccount();
+        break;
+    case 7:
+        deleteAccount();
+        break;
+    case 8:
+        withdrawFromAccount();
+        break;
+    case 9:
+        depositToAccount();
+        break;
+    case 10:
+        tansfer();
+        break;
+    case 11:
+        displayInfoForTheBank();
+        break;
+    case 12:
+        exit(0);
+    default:
+        cout<<"Wrong option,try again!"<<endl;
+    }
 }
 
 Bank Menu::getBank() const
@@ -31,79 +97,21 @@ Bank Menu::getBank() const
 
 void Menu::start()
 {
-     while(true)
+    while(true)
     {
 
 
         displayMainMenu();
-        int option;
-        cout<<"Enter option :"<<endl;
-        cin>>option;
-        switch(option)
-        {
-        case 1:
-            listCustomers();
-            break;
-        case 2:
-             addNewCustomer();
-            break;
-        case 3:
-             deleteCustomer();
-            break;
-        case 4:
-             listAllAccounts();
-            break;
-        case 5:
-             listCustomerAccounts();
-            break;
-        case 6:
-             addnewAccount();
-            break;
-        case 7:
-             deleteAccount();
-            break;
-        case 8:
-             withdrawFromAccount();
-            break;
-        case 9:
-             depositToAccount();
-            break;
-        case 10:
-             tansfer();
-            break;
-        case 11:
-             DisplayInfoForTheBank();
-            break;
-        case 12:
-            exit(0);
-        default:
-            cout<<"Wrong option,try again!"<<endl;
-        }
+        chooseOption();
     }
 }
 
-void Menu::displayMainMenu() const
-{
- cout<<endl;
-        cout<<"1 List customers"<<endl;
-        cout<<"2 Add new customer"<<endl;
-        cout<<"3 Delete customer"<<endl;
-        cout<<"4 List all accounts"<<endl;
-        cout<<"5 List customer accounts"<<endl;
-        cout<<"6 Add new account"<<endl;
-        cout<<"7 Delete  Account"<<endl;
-        cout<<"8 Withdraw from account"<<endl;
-        cout<<"9 Deposit to account"<<endl;
-        cout<<"10 Transfer"<<endl;
-        cout<<"11 Display info for the bank"<<endl;
-        cout<<"12 Quit"<<endl;
-        cout<<endl;
-}
+
 
 
 void Menu::listCustomers() const
 {
- bank.listCustomers();
+    bank.listCustomers();
 }
 void Menu::addNewCustomer()
 {
@@ -235,7 +243,7 @@ void Menu::tansfer()
     bank.transfer(fromIBAN,toIBAN,amount);
 }
 
-void Menu::DisplayInfoForTheBank() const
+void Menu::displayInfoForTheBank() const
 {
     bank.details();
 }
