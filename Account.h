@@ -16,7 +16,7 @@ public:
     virtual void deposit(double sum)=0;
     virtual bool withdraw(double amount)=0;
     virtual void display() const =0 ;
-
+    virtual Account* copy() const =0;
 
 
     int getIban() const;

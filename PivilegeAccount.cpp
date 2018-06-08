@@ -1,6 +1,4 @@
 #include "PivilegeAccount.h"
-#include<iostream>
-using namespace std;
 #include "Account.h"
 
 
@@ -79,4 +77,9 @@ void PivilegeAccount::setOverdraft(double newOverdraft)
 double PivilegeAccount::getOverdraft() const
 {
     return overdraft;
+}
+
+Account* PivilegeAccount::copy() const
+{
+    return new PivilegeAccount(*this);
 }

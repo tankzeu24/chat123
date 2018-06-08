@@ -18,7 +18,7 @@ public:
     bool withdraw(double sum);
     void display() const;
 
-
+    Account* copy() const;
 
 
 protected:

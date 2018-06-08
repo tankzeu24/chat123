@@ -1,6 +1,4 @@
 #include "SavingsAccount.h"
-#include<iostream>
-using namespace std;
 #include "Account.h"
 
 
@@ -75,4 +73,9 @@ void SavingsAccount::setInterestRate(double newInterestRate)
 double SavingsAccount::getInterestRate() const
 {
     return interestRate;
+}
+
+Account* SavingsAccount::copy() const
+{
+    return new SavingsAccount(*this);
 }

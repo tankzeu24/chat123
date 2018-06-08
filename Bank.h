@@ -5,12 +5,13 @@ using namespace std;
 #include <list>
 #include "Customer.h"
 #include "Account.h"
+#include <vector>
 class Bank
 {
 public:
 
 
-    Bank(string newName="noName",string newAddress="noAddress",list<Customer*> newCustomers=list<Customer*>(),list<Account*> newAccounts=list<Account*>());
+    Bank(string newName="noName",string newAddress="noAddress",vector<Customer*> newCustomers=vector<Customer*>(),vector<Account*> newAccounts=vector<Account*>());
     Bank(const Bank &bank);
     Bank& operator=(const Bank &bank);
     virtual ~Bank();
@@ -29,17 +30,17 @@ public:
     void withdrawlFromAccount(int iban,double amount);
     void depositToAccount(int iban,double amount);
     friend ostream& operator<<(ostream &os,const Bank& bank);
-    list<Customer*> getCustomers() const;
-    list<Account*> getAccounts() const;
+    vector<Customer*> getCustomers() const;
+    vector<Account*> getAccounts() const;
     void details() const;
-protected:
+
 
 private:
     void createAccount(string accountType,int iban,int ownerid,double amount,double overdraftOrInterest);
     string name;
     string address;
-    list<Customer*> customers;
-    list<Account*> accounts;
+    vector<Customer*> customers;
+    vector<Account*> accounts;
 
 
 };

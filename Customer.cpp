@@ -60,3 +60,7 @@ void Customer::display() const
 {
     cout<<"OwnerID : "<<getId()<< ", name: "<<getName()<< ", address: "<<getAddress()<<endl;
 }
+Customer* Customer::copy() const
+{
+    return new Customer(*this);
+}

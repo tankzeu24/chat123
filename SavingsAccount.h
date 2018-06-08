@@ -20,7 +20,7 @@ public:
 
     void setInterestRate(double newInterestRate);
     double getInterestRate() const;
-
+    Account* copy() const;
 
 protected:
 

@@ -91,7 +91,7 @@ void Menu::displayMainMenu() const
         cout<<"4 List all accounts"<<endl;
         cout<<"5 List customer accounts"<<endl;
         cout<<"6 Add new account"<<endl;
-        cout<<"7 Delete new Account"<<endl;
+        cout<<"7 Delete  Account"<<endl;
         cout<<"8 Withdraw from account"<<endl;
         cout<<"9 Deposit to account"<<endl;
         cout<<"10 Transfer"<<endl;

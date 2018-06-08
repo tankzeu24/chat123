@@ -1,7 +1,7 @@
 #include "CurrentAccount.h"
 #include "Account.h"
-#include <iostream>
-using namespace std;
+
+
 
 
 CurrentAccount::CurrentAccount():Account()
@@ -54,4 +54,9 @@ bool CurrentAccount::withdraw(double withdrawAmount)
 void CurrentAccount::display() const
 {
     cout<<"CurrentAccount , IBAN: "<<getIban()<<", Owner: "<<getOwner()<<" , Balance: "<<getBalance()<<endl;
+}
+
+Account* CurrentAccount::copy() const
+{
+    return new CurrentAccount(*this);
 }

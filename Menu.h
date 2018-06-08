@@ -15,17 +15,17 @@ public:
     void chooseOptionFromMenu()  const ;
 
 
-    void listCustomers()  const ;
+    void listCustomers() const;
     void addNewCustomer();
     void deleteCustomer();
-    void listAllAccounts() const ;
-    void listCustomerAccounts() const ;
+    void listAllAccounts() const;
+    void listCustomerAccounts() const;
     void addnewAccount();
     void deleteAccount();
     void withdrawFromAccount();
     void depositToAccount();
     void tansfer();
-    void DisplayInfoForTheBank() const ;
+    void DisplayInfoForTheBank() const;
 
     Bank getBank() const;
 protected:

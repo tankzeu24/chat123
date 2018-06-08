@@ -18,7 +18,7 @@ public:
     string getAddress() const;
     void display() const;
     void setId(int newId);
-
+    Customer* copy() const;
 
 private:
     int id;

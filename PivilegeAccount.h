@@ -19,6 +19,7 @@ public:
     void deposit(double sum);
     bool withdraw(double sum);
     void display() const;
+    Account* copy() const;
 protected:
 
 private:
