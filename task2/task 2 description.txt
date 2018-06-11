@@ -1,0 +1,16 @@
+Make a class BrowserHistory which contains information about maxSize  sites , where maxSize is property of BrowserHistory
+,the number reperesents the number of sites the class contains
+
+Make a structure HistoryEntry which describes a visit of a site ,the structure properties are:
+- int month;
+-char * url  ;
+
+The class BrowserHistory has the following methods:
+
+-addFromConsole() - adds a site from the console 
+-add(const HistoryEntry&) -adds site to the history,if the browser has reached
+its limit of HistoryEntry it can contain throw an exception this also applies for addFromConsole() method above
+-printWebsites() -prints information for all contained sites
+-int totalMonths(int givenMonth) const; - this method finds the number of sites which have property month equal to the parameter "givenMonth"
+-getMaxID()  - finds the most common month from all sites and removes the most recently added site;
+-BrowserHistory concat(const BrowserHistory&) - returns new object which is a a union of two objects of type BrowserHistory and they remain unchainged
