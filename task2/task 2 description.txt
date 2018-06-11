@@ -2,8 +2,8 @@ Make a class BrowserHistory which contains information about maxSize  sites , wh
 ,the number reperesents the number of sites the class contains
 
 Make a structure HistoryEntry which describes a visit of a site ,the structure properties are:
-- int month;
--char * url  ;
+- int month ;
+-char * url ;
 
 The class BrowserHistory has the following methods:
 
