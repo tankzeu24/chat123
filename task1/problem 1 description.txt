@@ -6,5 +6,5 @@ Make a calculator that computes reverse polish notation  working with doubles an
 1.create Stack class that works with doubles and ints
 
 2.create class Calculator with function calculate that accepts char* 
-which is a reverse polish notation ,the function uses the  operators  +, -, *, / è % (can be used only on ints). 
+which is a reverse polish notation ,the function uses the  operators  +, -, *, / and % (can be used only on ints). 
 The function computes the reverse polish notation and returns a number
