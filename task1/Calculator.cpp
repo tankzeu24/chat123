@@ -69,15 +69,15 @@ double Calculator::calcuteRPN(const char* expression)
                 char* newToken=appendCharToCharArray(tok,expression[i]);
                 delete tok;
                 tok=newToken;
-                delete newToken;
                 i++;
             }
             //Push on stack number.
             s.push(atof(tok));
-            delete tok;
+            delete tok; //since we have created something
 
-            tok = "";
+            tok = ""; //go back to the previous state,since we may read more doubles
         }
+
         //Check for operator
         else if (IsOp(expression[i]))
         {
@@ -132,10 +132,11 @@ double Calculator::calcuteRPN(const char* expression)
         }
         else
         {
-            throw std::invalid_argument("invalid expression "); //todo without std
+            throw std::invalid_argument("invalid expression ");
             break;
         }
     }
+    delete tok; //delete the pointer we created and assigned value
     //Return answer
     return s.pop();
 }
