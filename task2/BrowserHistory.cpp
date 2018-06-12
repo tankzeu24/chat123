@@ -17,6 +17,7 @@ BrowserHistory::BrowserHistory(const BrowserHistory& browserHistory)
 {
     maxSize=browserHistory.getMaxSize();
     currentSize=browserHistory.getCurrentSize();
+    list=new HistoryEntry[maxSize];
     for(int i=0; i<currentSize; i++)
     {
         list[i]=browserHistory.getElement(i);
@@ -30,6 +31,7 @@ BrowserHistory& BrowserHistory::operator=(const BrowserHistory& browserHistory)
         maxSize=browserHistory.getMaxSize();
         currentSize=browserHistory.getCurrentSize();
         delete[] list;
+        list=new HistoryEntry[maxSize];
         for(int i=0; i<currentSize; i++)
         {
             list[i]=browserHistory.getElement(i);
@@ -161,8 +163,8 @@ BrowserHistory BrowserHistory::concat(const BrowserHistory& browserHistory)
     //get total elements to be added
     int newCurrentSize=getCurrentSize()+browserHistory.getCurrentSize();
 
-    //make new object with x2 newCurrentSize so we can further add in it :)
-    BrowserHistory b=BrowserHistory(newCurrentSize);
+    //make new object with x2 newCurrentSize so we can further add
+    BrowserHistory b=BrowserHistory(newCurrentSize*2);
     for(int i=0; i<getCurrentSize(); i++)
     {
         b.add(getElement(i));

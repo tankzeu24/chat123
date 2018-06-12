@@ -1,27 +1,23 @@
 #include <iostream>
-
 using namespace std;
 #include "BrowserHistory.h"
+
+
+
 int main()
 {
-
-
     BrowserHistory b=BrowserHistory(1);
     BrowserHistory c=BrowserHistory(3);
-    for(int i=0; i<1; i++)
 
-    {
-        b.addWithConsole();
+      cout<<"Enter first browser history (1 element only)"<<endl;
+    b.addWithConsole();
 
 
-    }
-    cout<<"Enter second browser history"<<endl;
+
+    cout<<"Enter second browser history (3 elements only)"<<endl;
     for(int i=0; i<3; i++)
-
     {
         c.addWithConsole();
-
-
     }
     cout<<"First BrowserHistory is with 1 element"<<endl;
     b.printWebsites();
@@ -31,6 +27,10 @@ int main()
     cout<<c.getMaxID()<<endl;
     cout<<"Second list changed to : "<<endl;
     c.printWebsites();
+
+    BrowserHistory d1=b;
+    BrowserHistory d2(d1);
+
 
     return 0;
 }

@@ -11,7 +11,7 @@ HistoryEntry::HistoryEntry(int newMonth,const char* newURL) :url(nullptr)
 
 HistoryEntry::~HistoryEntry()
 {
-    //dtor
+   delete url;
 }
 HistoryEntry::HistoryEntry(const HistoryEntry &historyEntry) :url(nullptr)
 {

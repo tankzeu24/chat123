@@ -6,13 +6,16 @@ using namespace std;
 
 class Calculator
 {
-    public:
-        Calculator();
-        virtual ~Calculator();
+public:
+    Calculator();
+    virtual ~Calculator();
 
-     bool IsOp(char c);
-     double RPN(string expression);
-    private:
+
+    double calcuteRPN(const char* expression);
+
+private:
+    bool IsOp(char c);
+    char* appendCharToCharArray(char* array, const char a);
 
 };
 

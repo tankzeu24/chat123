@@ -7,6 +7,6 @@ using namespace std;
 int main(int argc, char *argv[]){
 
     Calculator c = Calculator();
-    cout<<c.RPN("6.0 5.0 %");
+    cout<<c.RPN("5 1 2 + 4 * + 3 -");
 
 }

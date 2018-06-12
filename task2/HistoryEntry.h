@@ -7,7 +7,7 @@ struct HistoryEntry
 {
 public:
 
-    HistoryEntry(int month=1,const char* url="default url");
+    HistoryEntry(int month=1,const char* url="NoURL");
     HistoryEntry(const HistoryEntry &historyEntry);
     HistoryEntry& operator=(const HistoryEntry &historyEntry);
     virtual ~HistoryEntry();
