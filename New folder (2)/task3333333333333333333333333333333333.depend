@@ -44,3 +44,26 @@
 1528928224 c:\users\home_bg\desktop\cpp projects\task3333333333333333333333333333333333\include\interactivemenu.h
 	"Store.h"
 
+1528934201 source:c:\users\home_bg\documents\github\chat\new folder (2)\main.cpp
+	<iostream>
+	"Store.h"
+	"InteractiveMenu.h"
+
+1528928016 c:\users\home_bg\documents\github\chat\new folder (2)\include\store.h
+	"Car.h"
+
+1528928365 c:\users\home_bg\documents\github\chat\new folder (2)\include\car.h
+	<iostream>
+
+1528928224 c:\users\home_bg\documents\github\chat\new folder (2)\include\interactivemenu.h
+	"Store.h"
+
+1528933814 source:c:\users\home_bg\documents\github\chat\new folder (2)\src\car.cpp
+	"Car.h"
+	<cstring>
+	<iostream>
+
+1528934252 source:c:\users\home_bg\documents\github\chat\new folder (2)\src\store.cpp
+	"Store.h"
+	"Car.h"
+
