@@ -120,7 +120,8 @@ void Store::update()
     cout<<"Enter SKU"<<endl;
     cin>>findSKU;
 
-        if (findSKU < 1 || findSKU > currentSize)
+        int newSKU=findCar(findSKU);
+        if (newSKU==-1)
         {
             throw std::invalid_argument("SKU does not exist in the store");
         }
@@ -141,31 +142,32 @@ void Store::update()
 
     case 1:
         cout<<"enter price"<<endl;
+        cout<<list[newSKU]<<endl;
         double price;
         cin>>price;
 
-        list[findSKU].setPrice(price);
+        list[newSKU].setPrice(price);
         break;
     case 2:
         int mileage;
         cin>>mileage;
 
-        list[findSKU].setMiles(mileage);
+        list[newSKU].setMiles(mileage);
         break;
     case 3:
         char brand[50];
         cin.getline(brand,50);
-        list[findSKU].setBrand(brand);
+        list[newSKU].setBrand(brand);
         break;
     case 4:
         char model[50];
         cin.getline(model,50);
-        list[findSKU].setModel(model);
+        list[newSKU].setModel(model);
         break;
     case 5:
         char category[50];
         cin.getline(category,50);
-        list[findSKU].setCategory(category);
+        list[newSKU].setCategory(category);
         break;
     }
 
