@@ -14,7 +14,6 @@ Calculator::~Calculator()
 }
 
 
-
 bool Calculator::IsOp(char c)
 {
     //Check for operators.
@@ -32,27 +31,38 @@ bool Calculator::IsOp(char c)
 }
 
 
-char* Calculator::appendCharToCharArray(char* array, const char a)
+char* Calculator::appendCharToCharArray(const char* array, const char a)
 {
     size_t len = strlen(array);
 
-    char* ret = new char[len+2];
+    char* newChar = new char[len+2];
 
-    strcpy(ret, array);
-    ret[len] = a;
-    ret[len+1] = '\0';
+    strcpy(newChar, array);
+    newChar[len] = a;
+    newChar[len+1] = '\0';
 
-    return ret;
+    return newChar;
 }
 
 double Calculator::calcuteRPN(const char* expression)
 {
+    if(expression==nullptr)
+    {
+        throw std::invalid_argument("cannot calculate nullptr expression");
+    }
+    else if(strlen(expression) >100 )
+    {
+        throw std::invalid_argument("RPN expression longer than 100 symbols");
+    }
+
     int i = 0;
-    double v1, v2, ret;
-    v1 = ret = v2 = 0.0;
+    double v1, v2, stackNumber;
+    v1 = stackNumber = v2 = 0.0;
     Stack s;
-    char* tok = "";
+    const char* inputNumber = ""; //possible number to read
+
     int totalLength=strlen(expression);
+
 
     while (i < totalLength)
     {
@@ -66,16 +76,16 @@ double Calculator::calcuteRPN(const char* expression)
         {
             while (isdigit(expression[i]) || expression[i] == '.')
             {
-                char* newToken=appendCharToCharArray(tok,expression[i]);
-                delete tok;
-                tok=newToken;
+                char* newToken=appendCharToCharArray(inputNumber,expression[i]);
+                delete inputNumber;
+                inputNumber=newToken;
                 i++;
             }
             //Push on stack number.
-            s.push(atof(tok));
-            delete tok; //since we have created something
+            s.push(atof(inputNumber));
+            delete inputNumber; //since we have created something
 
-            tok = ""; //go back to the previous state,since we may read more doubles
+            inputNumber = ""; //go back to the previous state,since we may read more doubles
         }
 
         //Check for operator
@@ -85,19 +95,19 @@ double Calculator::calcuteRPN(const char* expression)
             {
                 v1 = s.pop();
                 v2 = s.pop();
-                ret = (v1 + v2);
+                stackNumber = (v1 + v2);
             }
             if (expression[i] == '-')
             {
                 v1 = s.pop();
                 v2 = s.pop();
-                ret = v2 - v1;
+                stackNumber = v2 - v1;
             }
             if (expression[i] == '*')
             {
                 v1 = s.pop();
                 v2 = s.pop();
-                ret = (v1 * v2);
+                stackNumber = (v1 * v2);
             }
             if (expression[i] == '/')
             {
@@ -106,10 +116,10 @@ double Calculator::calcuteRPN(const char* expression)
 
                 if(v1==0.0)
                 {
-                    throw std::invalid_argument("division by 0"); //todo without std
+                    throw std::invalid_argument("division by 0");
                     break;
                 }
-                ret = (v2 / v1);
+                stackNumber = (v2 / v1);
             }
             if(expression[i]=='%')
             {
@@ -117,18 +127,19 @@ double Calculator::calcuteRPN(const char* expression)
                 v2 = s.pop();
                 if ( trunc(v1)==v1 && trunc(v2)==v2)
                 {
-                    ret=( (int)v2 % (int)v1);
+
+                    stackNumber=( (int)v2 % (int)v1);
                 }
                 else
                 {
-                    throw std::invalid_argument("% used with two not whole numbers"); //todo without std
+                    throw std::invalid_argument("% used with two not whole numbers");
                 }
             }
 
-            //INC Counter
+            //increment counter
             i++;
             //Push result onto stack
-            s.push(ret);
+            s.push(stackNumber);
         }
         else
         {
@@ -136,7 +147,7 @@ double Calculator::calcuteRPN(const char* expression)
             break;
         }
     }
-    delete tok; //delete the pointer we created and assigned value
+    delete inputNumber; //delete the pointer we created and assigned value
     //Return answer
     return s.pop();
 }

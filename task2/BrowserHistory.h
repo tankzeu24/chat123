@@ -5,7 +5,7 @@
 class BrowserHistory
 {
 public:
-    BrowserHistory(int newMaxSize);
+    BrowserHistory(int N);
     virtual ~BrowserHistory();
     BrowserHistory(const BrowserHistory &browserHistory);
     BrowserHistory& operator=(const BrowserHistory &BrowserHistory);
@@ -22,8 +22,7 @@ public:
 
 private:
 
-
-    int maxSize;
+    int N;
     int currentSize;
     HistoryEntry* list;
 

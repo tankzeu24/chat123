@@ -1,0 +1,30 @@
+
+
+make a class Product with whatever properties you want but it must have:
+
+int SKU-unique id;
+char* Brand;
+char* Mode;
+char* Category;
+double Price;
+int Count - the number of items in the store the object is contained in 
+int Miles
+
+create methods for writing and reading
+
+Make a class Store which has dynamic array of products
+the class Store has functions:
+
+-to add new product
+-delete a product
+-change a product
+-print all products
+
+write in the main() the following menu : 
+
+
+A	Add new product
+X	Delete product
+C	Change product
+D	Display products
+Q	Quit

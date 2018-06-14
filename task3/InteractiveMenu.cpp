@@ -25,39 +25,37 @@ void InteractiveMenu::display() const
 
 void InteractiveMenu::chooseOption()
 {
-  char choice;
-        cin>>choice;
+    char choice;
+    cin>>choice;
 
 
 
 
-        switch(choice)
-        {
-        case 'A':
+    switch(choice)
+    {
+    case 'A':
 
-            store.insert();
+        store.insert();
+        break;
 
+    case 'X':
+        int id;
+        cout<<"Enter SKU"<<endl;
+        cin>>id;
+        store.remove(id);
+        break;
+    case 'C':
+        store.update();
+        break;
+    case 'D':
+        store.display();
+        break;
 
-            break;
-
-        case 'X':
-            int id;
-            cout<<"Enter id"<<endl;
-            cin>>id;
-            store.remove(id);
-            break;
-        case 'C':
-            store.update();
-            break;
-        case 'D':
-            store.display();
-            break;
-
-        case 'Q':
-            exit(0);
-        default:
-            cout<<"Wrong option,try again!"<<endl;
-        }
+    case 'Q':
+        exit(0);
+    default:
+        cout<<"Wrong option,try again!"<<endl;
+    }
 
 
 }
@@ -70,15 +68,22 @@ void InteractiveMenu::start()
 
         display();
         cout<<endl;
-        try{
-               chooseOption();
+        try
+        {
+            chooseOption();
 
         }
         catch (const std::invalid_argument &e)
         {
             cout<<e.what()<<endl;
         }
-         cout<<endl;
+        catch( const  std::out_of_range &e1)
+        {
+            cout<<"Out of range error found"<<endl;
+            cout<<e1.what();
+            cout<<endl;
+        }
+
 
 
     }

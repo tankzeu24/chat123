@@ -11,7 +11,7 @@ Stack::Stack()
 {
     size = MAX;
     arr = new double[size];
-    top = -1; // Празен стек
+    top = -1;
 }
 
 void Stack::grow()
@@ -38,7 +38,7 @@ double Stack::peek() const
 {
     if (empty())
     {
-        cout << "Грешка: опит за поглеждане в празен стек!\n";
+        throw std::invalid_argument( "Error peeking from empty stack!\n");
         return 0;
     }
 
@@ -63,7 +63,7 @@ double Stack::pop()
 {
     if (empty())
     {
-        cout << "Грешка: опит за изключване от празен стек!\n";
+        throw std::invalid_argument("Poping from empty stack exception !\n");
         return 0;
     }
     return arr[top--];

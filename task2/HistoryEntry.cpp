@@ -38,12 +38,15 @@ void HistoryEntry::setMonth(int newMonth)
         throw std::invalid_argument("month not in range [1;12]");
 
     }
-
     month=newMonth;
 }
 
 void HistoryEntry::setURL(const char* newURL)
 {
+    if(newURL==nullptr)
+    {
+        throw std::invalid_argument("cannot pass null as a site");
+    }
     delete[] url;
     int length=strlen(newURL);
     url =new char[length];

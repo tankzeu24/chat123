@@ -6,30 +6,49 @@ using namespace std;
 
 int main()
 {
-    BrowserHistory b=BrowserHistory(1);
-    BrowserHistory c=BrowserHistory(3);
-
-      cout<<"Enter first browser history (1 element only)"<<endl;
-    b.addWithConsole();
 
 
+    cout<<"============="<<endl;
+    BrowserHistory browserCommons = BrowserHistory(5);
+    browserCommons.add( HistoryEntry(1,"test"));
+    browserCommons.add( HistoryEntry(2,"test"));
+    browserCommons.add( HistoryEntry(2,"test"));
+    browserCommons.add( HistoryEntry(2,"test"));
+    browserCommons.add( HistoryEntry(4,"test"));
 
-    cout<<"Enter second browser history (3 elements only)"<<endl;
-    for(int i=0; i<3; i++)
-    {
-        c.addWithConsole();
-    }
-    cout<<"First BrowserHistory is with 1 element"<<endl;
-    b.printWebsites();
-    cout<<"First BrowserHistory is with 3 elements"<<endl;
-    c.printWebsites();
-    cout<<" most common element from the second list is "<<endl;
-    cout<<c.getMaxID()<<endl;
-    cout<<"Second list changed to : "<<endl;
-    c.printWebsites();
+    cout<<"Month 2(february) is in the history  "<<browserCommons.totalMonths(2)<< " times"<<endl;
 
-    BrowserHistory d1=b;
-    BrowserHistory d2(d1);
+    cout<<"Most visited months are in month number : " <<browserCommons.getMaxID()<<endl; //should be 2
+    cout<<"Current state of browserCommons"<<endl;
+    browserCommons.printWebsites(); // month 4 is gone from browserCommons
+
+    cout<<"============="<<endl;
+
+    BrowserHistory d1=browserCommons; //memory leak test
+    BrowserHistory d2(browserCommons); //memory leak test
+
+    BrowserHistory secondHistory =BrowserHistory(4);
+    secondHistory.add(HistoryEntry(10,"www.google.com"));
+    secondHistory.add(HistoryEntry(10,"www.google.com"));
+    secondHistory.add(HistoryEntry(11,"www.sporal.bg"));
+
+
+    BrowserHistory concatedHistory=browserCommons.concat(secondHistory);
+    cout<<"Concat result is"<<endl;
+    concatedHistory.printWebsites();
+
+    cout<<"Change concated history"<<endl;
+    cout<<"Most visited months are in month number : " <<concatedHistory.getMaxID()<<endl;//should be 2 again
+    cout<<"Current state of concatedHistory object"<<endl;
+    concatedHistory.printWebsites();
+
+    cout<<"The two objects browserCommons and secondHistory didn't change"<<endl;
+    cout<<"browserCommons state is : "<<endl;
+    browserCommons.printWebsites();
+    cout<<"secondHistory state is : "<<endl;
+    secondHistory.printWebsites();
+
+
 
 
     return 0;

@@ -1,9 +1,12 @@
-Make a class BrowserHistory which contains information about maxSize  sites , where maxSize is property of BrowserHistory
+
+string and classes from STL cannot be used ! 
+
+Make a class BrowserHistory which contains information about N sites , where N is property of BrowserHistory
 ,the number reperesents the number of sites the class contains
 
 Make a structure HistoryEntry which describes a visit of a site ,the structure properties are:
 - int month ;
-- char * url ;
+- char * url ; // cannot use string
 
 The class BrowserHistory has the following methods:
 

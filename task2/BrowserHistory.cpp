@@ -2,12 +2,12 @@
 
 BrowserHistory::BrowserHistory(int newMaxSize)
 {
-    if(newMaxSize<1)
+    if(newMaxSize < 1)
     {
         throw std::invalid_argument("invalid size number  ,must be >0");
     }
     list=new HistoryEntry[newMaxSize];
-    maxSize=newMaxSize;
+    N=newMaxSize;
     currentSize=0;
 }
 
@@ -15,9 +15,9 @@ BrowserHistory::BrowserHistory(int newMaxSize)
 
 BrowserHistory::BrowserHistory(const BrowserHistory& browserHistory)
 {
-    maxSize=browserHistory.getMaxSize();
+    N=browserHistory.getMaxSize();
     currentSize=browserHistory.getCurrentSize();
-    list=new HistoryEntry[maxSize];
+    list=new HistoryEntry[N];
     for(int i=0; i<currentSize; i++)
     {
         list[i]=browserHistory.getElement(i);
@@ -28,10 +28,10 @@ BrowserHistory& BrowserHistory::operator=(const BrowserHistory& browserHistory)
 {
     if(this != &browserHistory)
     {
-        maxSize=browserHistory.getMaxSize();
+        N=browserHistory.getMaxSize();
         currentSize=browserHistory.getCurrentSize();
         delete[] list;
-        list=new HistoryEntry[maxSize];
+        list=new HistoryEntry[N];
         for(int i=0; i<currentSize; i++)
         {
             list[i]=browserHistory.getElement(i);
@@ -61,12 +61,12 @@ int BrowserHistory::getCurrentSize() const
 
 int BrowserHistory::getMaxSize() const
 {
-    return maxSize;
+    return N;
 }
 
 void BrowserHistory::addWithConsole()
 {
-    if (currentSize == maxSize)
+    if (currentSize == N)
     {
         throw std::invalid_argument("you cannot add anymore elements");
     }
@@ -77,7 +77,7 @@ void BrowserHistory::addWithConsole()
 
 void BrowserHistory::add(const HistoryEntry &historyEntry)
 {
-    if (currentSize == maxSize)
+    if (currentSize == N)
     {
         throw std::invalid_argument("you cannot add anymore elements");
     }
@@ -130,7 +130,10 @@ int BrowserHistory::getMaxID()
         return list[0].getMonth();
     }
 
-    //some fancy algorithm which works
+
+
+
+    //find the id of the most common month
     int count = 0, curr_cnt = 1, freq_num = 0, key = 0;
     for(int i = 0; i < currentSize-1; i++)
     {
@@ -149,7 +152,6 @@ int BrowserHistory::getMaxID()
             freq_num = key;
         }
     }
-    cout<<"Number is :"<< freq_num <<" Number of times: "<< count;
 
 
     //reduce the elements by 1 and return the value
@@ -164,14 +166,14 @@ BrowserHistory BrowserHistory::concat(const BrowserHistory& browserHistory)
     int newCurrentSize=getCurrentSize()+browserHistory.getCurrentSize();
 
     //make new object with x2 newCurrentSize so we can further add
-    BrowserHistory b=BrowserHistory(newCurrentSize*2);
+    BrowserHistory newBrowser=BrowserHistory(newCurrentSize*2);
     for(int i=0; i<getCurrentSize(); i++)
     {
-        b.add(getElement(i));
+        newBrowser.add(getElement(i));
     }
     for(int i=0; i<browserHistory.getCurrentSize(); i++)
     {
-        b.add(browserHistory.getElement(i));
+        newBrowser.add(browserHistory.getElement(i));
     }
-    return b;
+    return newBrowser;
 }
