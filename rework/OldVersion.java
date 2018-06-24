@@ -10,9 +10,7 @@ public class OldVersion {
 		command.add("service");
 		command.add("--status-all");
 		try {
-			ShellCommandResult res = ApplicationHandlerUtils.executeShellCommand(true, command); // accepts
-																									// ArrayList<String>
-																									// only
+			ShellCommandResult res = ApplicationHandlerUtils.executeShellCommand(true, command); // accepts ArrayList<String> only
 
 			if (res.isSuccess()) {
 				// log the command response
