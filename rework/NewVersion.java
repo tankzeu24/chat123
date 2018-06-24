@@ -1,5 +1,8 @@
 package asd;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class NewVersion {
 
 	// check if service is present in the user PC ,by invkoing the command "service
@@ -9,23 +12,28 @@ public class NewVersion {
 
 		ArrayList<String> command = new ArrayList<String>();
 		command.add("service");
+		command.add("--status-all");		
+		List<ArrayList<String>> commands = ArrayList<ArrayList<String>>();
+		ArrayList<String> serviceCommand = new ArrayList<String>();
+		command.add("service");
 		command.add("--status-all");
+		commands.add(serviceCommand);
+		ArrayList<String> chkCommand = new ArrayList<String>();
+		chkCommand.add("chkconfig");
+		commands.add(chkCommand);
+		ArrayList<String> systemctlCommand = new ArrayList<String>();
+		systemctlCommand.add("systemctl");
+		systemctlCommand.add("list-units");
+		commands.add(systemctlCommand);
 		try {
-			if (isContained(command, service, logger)) {
-				return true;
-			} else if (isContained(new ArrayList<String>() {
+			
+			for(int i=0;i<commands.size();i++)
 				{
-					add("chkconfig");
+					if(isContained(commands.get(i),service,logger))
+					{
+						return true;
+					}
 				}
-			}, service, logger)) {
-				return true;
-			} else if (isContained(new ArrayList<String>() {
-				{
-					add("systemctl list-units");
-				}
-			}, service, logger)) {
-				return true;
-			}
 
 		} catch (IOException e) {
 			logger.error("Failed to find services.", e);
