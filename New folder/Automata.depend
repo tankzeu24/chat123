@@ -1,0 +1,407 @@
+# depslib dependency file v1.0
+1504145324 source:d:\finaanswer\automata\src\contextfreegrammar.cpp
+	"ContextFreeGrammar.h"
+	"WordBelongsToLanguageMethodSelector.h"
+	<iostream>
+
+1504145293 d:\finaanswer\automata\include\contextfreegrammar.h
+	<set>
+	<map>
+	<stack>
+	<string>
+	"Variable.h"
+	"Terminal.h"
+	"Rule.h"
+
+1454184814 d:\finaanswer\automata\include\variable.h
+	"IRightHandSideElement.h"
+	<string>
+	<algorithm>
+
+1454184814 d:\finaanswer\automata\include\irighthandsideelement.h
+	<string>
+
+1454184814 d:\finaanswer\automata\include\terminal.h
+	"IRightHandSideElement.h"
+	<set>
+	<vector>
+	<string>
+	<sstream>
+
+1454184814 d:\finaanswer\automata\include\rule.h
+	"RightSide.h"
+	"Variable.h"
+	<string>
+
+1454184814 d:\finaanswer\automata\include\rightside.h
+	"Terminal.h"
+	"Variable.h"
+	"IRightHandSideElement.h"
+	<vector>
+	<set>
+
+1454184814 d:\finaanswer\automata\include\wordbelongstolanguagemethodselector.h
+	"ContextFreeGrammar.h"
+	"PushdownAutomaton.h"
+
+1503940147 d:\finaanswer\automata\include\pushdownautomaton.h
+	"Rule.h"
+	"PushdownAutomatonTransition.h"
+	"PushdownAutomatonConfiguration.h"
+	"PushdownAutomatonState.h"
+	"Utility.h"
+	<set>
+	<vector>
+	<queue>
+
+1454184814 d:\finaanswer\automata\include\pushdownautomatontransition.h
+	"PushdownAutomatonState.h"
+	"RightSide.h"
+	"Terminal.h"
+
+1454184814 d:\finaanswer\automata\include\pushdownautomatonstate.h
+	<string>
+
+1503943397 d:\finaanswer\automata\include\pushdownautomatonconfiguration.h
+	<vector>
+	"PushdownAutomatonTransition.h"
+	"PushdownAutomatonState.h"
+
+1454184814 d:\finaanswer\automata\include\utility.h
+	<set>
+	"Rule.h"
+
+1454184814 source:d:\finaanswer\automata\src\irighthandsideelement.cpp
+	"IRightHandSideElement.h"
+
+1504144926 source:d:\finaanswer\automata\src\main.cpp
+	<iostream>
+	<string>
+	"Terminal.h"
+	"Variable.h"
+	"ContextFreeGrammar.h"
+	"WordBelongsToLanguageMethodSelector.h"
+	"IRightHandSideElement.h"
+	"PushdownAutomaton.h"
+
+1504138866 source:d:\finaanswer\automata\src\pushdownautomaton.cpp
+	"PushdownAutomaton.h"
+	<iostream>
+
+1504142092 source:d:\finaanswer\automata\src\pushdownautomatonconfiguration.cpp
+	"PushdownAutomatonConfiguration.h"
+	<iostream>
+
+1503828002 source:d:\finaanswer\automata\src\pushdownautomatonstate.cpp
+	"PushdownAutomatonState.h"
+	<string>
+	<sstream>
+
+1454184814 source:d:\finaanswer\automata\src\pushdownautomatontransition.cpp
+	"PushdownAutomatonTransition.h"
+
+1504125735 source:d:\finaanswer\automata\src\rightside.cpp
+	"RightSide.h"
+	<iostream>
+
+1454184814 source:d:\finaanswer\automata\src\rule.cpp
+	"Rule.h"
+
+1503828101 source:d:\finaanswer\automata\src\terminal.cpp
+	"Terminal.h"
+	"RightSide.h"
+
+1503828110 source:d:\finaanswer\automata\src\utility.cpp
+	"Utility.h"
+
+1454184814 source:d:\finaanswer\automata\src\variable.cpp
+	"RightSide.h"
+	"Variable.h"
+
+1504142846 source:d:\finaanswer\automata\src\wordbelongstolanguagemethodselector.cpp
+	"WordBelongsToLanguageMethodSelector.h"
+	"PushdownAutomaton.h"
+	"ContextFreeGrammar.h"
+	<iostream>
+
+1504144888 source:d:\finaanswer\automata\src\test.cpp
+
+1529027816 source:c:\users\home_bg\desktop\new folder (17)\src\contextfreegrammar.cpp
+	"ContextFreeGrammar.h"
+	"WordBelongsToLanguageMethodSelector.h"
+	<iostream>
+	<string>
+	"Variable.h"
+
+1529027275 c:\users\home_bg\desktop\new folder (17)\include\contextfreegrammar.h
+	<set>
+	<map>
+	<stack>
+	<string>
+	"Variable.h"
+	"Terminal.h"
+	"Rule.h"
+
+1454145214 c:\users\home_bg\desktop\new folder (17)\include\variable.h
+	"IRightHandSideElement.h"
+	<string>
+	<algorithm>
+
+1454145214 c:\users\home_bg\desktop\new folder (17)\include\irighthandsideelement.h
+	<string>
+
+1454145214 c:\users\home_bg\desktop\new folder (17)\include\terminal.h
+	"IRightHandSideElement.h"
+	<set>
+	<vector>
+	<string>
+	<sstream>
+
+1454145214 c:\users\home_bg\desktop\new folder (17)\include\rule.h
+	"RightSide.h"
+	"Variable.h"
+	<string>
+
+1454145214 c:\users\home_bg\desktop\new folder (17)\include\rightside.h
+	"Terminal.h"
+	"Variable.h"
+	"IRightHandSideElement.h"
+	<vector>
+	<set>
+
+1454145214 c:\users\home_bg\desktop\new folder (17)\include\wordbelongstolanguagemethodselector.h
+	"ContextFreeGrammar.h"
+	"PushdownAutomaton.h"
+
+1503907747 c:\users\home_bg\desktop\new folder (17)\include\pushdownautomaton.h
+	"Rule.h"
+	"PushdownAutomatonTransition.h"
+	"PushdownAutomatonConfiguration.h"
+	"PushdownAutomatonState.h"
+	"Utility.h"
+	<set>
+	<vector>
+	<queue>
+
+1454145214 c:\users\home_bg\desktop\new folder (17)\include\pushdownautomatontransition.h
+	"PushdownAutomatonState.h"
+	"RightSide.h"
+	"Terminal.h"
+
+1454145214 c:\users\home_bg\desktop\new folder (17)\include\pushdownautomatonstate.h
+	<string>
+
+1503910997 c:\users\home_bg\desktop\new folder (17)\include\pushdownautomatonconfiguration.h
+	<vector>
+	"PushdownAutomatonTransition.h"
+	"PushdownAutomatonState.h"
+
+1454145214 c:\users\home_bg\desktop\new folder (17)\include\utility.h
+	<set>
+	"Rule.h"
+
+1529027877 source:c:\users\home_bg\desktop\new folder (17)\src\irighthandsideelement.cpp
+	"IRightHandSideElement.h"
+	<string>
+
+1529027136 source:c:\users\home_bg\desktop\new folder (17)\src\main.cpp
+	<iostream>
+	<string>
+	"Terminal.h"
+	"Variable.h"
+	"ContextFreeGrammar.h"
+	"WordBelongsToLanguageMethodSelector.h"
+	"IRightHandSideElement.h"
+	"PushdownAutomaton.h"
+
+1529027878 source:c:\users\home_bg\desktop\new folder (17)\src\pushdownautomaton.cpp
+	"PushdownAutomaton.h"
+	<iostream>
+	<string>
+
+1529027864 source:c:\users\home_bg\desktop\new folder (17)\src\pushdownautomatonconfiguration.cpp
+	"PushdownAutomatonConfiguration.h"
+	<iostream>
+	<string>
+
+1529027860 source:c:\users\home_bg\desktop\new folder (17)\src\pushdownautomatonstate.cpp
+	"PushdownAutomatonState.h"
+	<string>
+	<sstream>
+	<string>
+
+1529027856 source:c:\users\home_bg\desktop\new folder (17)\src\pushdownautomatontransition.cpp
+	"PushdownAutomatonTransition.h"
+	<string>
+
+1529027853 source:c:\users\home_bg\desktop\new folder (17)\src\rightside.cpp
+	"RightSide.h"
+	<iostream>
+	<string>
+
+1529027849 source:c:\users\home_bg\desktop\new folder (17)\src\rule.cpp
+	"Rule.h"
+	<string>
+	<string>
+
+1529027845 source:c:\users\home_bg\desktop\new folder (17)\src\terminal.cpp
+	"Terminal.h"
+	"RightSide.h"
+	<string>
+
+1529027834 source:c:\users\home_bg\desktop\new folder (17)\src\utility.cpp
+	"Utility.h"
+	<string>
+
+1529027831 source:c:\users\home_bg\desktop\new folder (17)\src\variable.cpp
+	"RightSide.h"
+	"Variable.h"
+	<string>
+
+1529027843 source:c:\users\home_bg\desktop\new folder (17)\src\wordbelongstolanguagemethodselector.cpp
+	"WordBelongsToLanguageMethodSelector.h"
+	"PushdownAutomaton.h"
+	"ContextFreeGrammar.h"
+	<iostream>
+	<string>
+
+1529027816 source:c:\users\home_bg\documents\github\chat\new folder\src\contextfreegrammar.cpp
+	"ContextFreeGrammar.h"
+	"WordBelongsToLanguageMethodSelector.h"
+	<iostream>
+	<string>
+	"Variable.h"
+
+1529027275 c:\users\home_bg\documents\github\chat\new folder\include\contextfreegrammar.h
+	<set>
+	<map>
+	<stack>
+	<string>
+	"Variable.h"
+	"Terminal.h"
+	"Rule.h"
+
+1454145214 c:\users\home_bg\documents\github\chat\new folder\include\variable.h
+	"IRightHandSideElement.h"
+	<string>
+	<algorithm>
+
+1454145214 c:\users\home_bg\documents\github\chat\new folder\include\irighthandsideelement.h
+	<string>
+
+1454145214 c:\users\home_bg\documents\github\chat\new folder\include\terminal.h
+	"IRightHandSideElement.h"
+	<set>
+	<vector>
+	<string>
+	<sstream>
+
+1454145214 c:\users\home_bg\documents\github\chat\new folder\include\rule.h
+	"RightSide.h"
+	"Variable.h"
+	<string>
+
+1454145214 c:\users\home_bg\documents\github\chat\new folder\include\rightside.h
+	"Terminal.h"
+	"Variable.h"
+	"IRightHandSideElement.h"
+	<vector>
+	<set>
+
+1454145214 c:\users\home_bg\documents\github\chat\new folder\include\wordbelongstolanguagemethodselector.h
+	"ContextFreeGrammar.h"
+	"PushdownAutomaton.h"
+
+1503907747 c:\users\home_bg\documents\github\chat\new folder\include\pushdownautomaton.h
+	"Rule.h"
+	"PushdownAutomatonTransition.h"
+	"PushdownAutomatonConfiguration.h"
+	"PushdownAutomatonState.h"
+	"Utility.h"
+	<set>
+	<vector>
+	<queue>
+
+1454145214 c:\users\home_bg\documents\github\chat\new folder\include\pushdownautomatontransition.h
+	"PushdownAutomatonState.h"
+	"RightSide.h"
+	"Terminal.h"
+
+1454145214 c:\users\home_bg\documents\github\chat\new folder\include\pushdownautomatonstate.h
+	<string>
+
+1503910997 c:\users\home_bg\documents\github\chat\new folder\include\pushdownautomatonconfiguration.h
+	<vector>
+	"PushdownAutomatonTransition.h"
+	"PushdownAutomatonState.h"
+
+1454145214 c:\users\home_bg\documents\github\chat\new folder\include\utility.h
+	<set>
+	"Rule.h"
+
+1529027877 source:c:\users\home_bg\documents\github\chat\new folder\src\irighthandsideelement.cpp
+	"IRightHandSideElement.h"
+	<string>
+
+1529027950 source:c:\users\home_bg\documents\github\chat\new folder\src\main.cpp
+	<iostream>
+	<string>
+	"Terminal.h"
+	"Variable.h"
+	"ContextFreeGrammar.h"
+	"WordBelongsToLanguageMethodSelector.h"
+	"IRightHandSideElement.h"
+	"PushdownAutomaton.h"
+	<string>
+
+1529027878 source:c:\users\home_bg\documents\github\chat\new folder\src\pushdownautomaton.cpp
+	"PushdownAutomaton.h"
+	<iostream>
+	<string>
+
+1529027864 source:c:\users\home_bg\documents\github\chat\new folder\src\pushdownautomatonconfiguration.cpp
+	"PushdownAutomatonConfiguration.h"
+	<iostream>
+	<string>
+
+1529027860 source:c:\users\home_bg\documents\github\chat\new folder\src\pushdownautomatonstate.cpp
+	"PushdownAutomatonState.h"
+	<string>
+	<sstream>
+	<string>
+
+1529027856 source:c:\users\home_bg\documents\github\chat\new folder\src\pushdownautomatontransition.cpp
+	"PushdownAutomatonTransition.h"
+	<string>
+
+1529027853 source:c:\users\home_bg\documents\github\chat\new folder\src\rightside.cpp
+	"RightSide.h"
+	<iostream>
+	<string>
+
+1529027849 source:c:\users\home_bg\documents\github\chat\new folder\src\rule.cpp
+	"Rule.h"
+	<string>
+	<string>
+
+1529027845 source:c:\users\home_bg\documents\github\chat\new folder\src\terminal.cpp
+	"Terminal.h"
+	"RightSide.h"
+	<string>
+
+1529027834 source:c:\users\home_bg\documents\github\chat\new folder\src\utility.cpp
+	"Utility.h"
+	<string>
+
+1529027831 source:c:\users\home_bg\documents\github\chat\new folder\src\variable.cpp
+	"RightSide.h"
+	"Variable.h"
+	<string>
+
+1529027843 source:c:\users\home_bg\documents\github\chat\new folder\src\wordbelongstolanguagemethodselector.cpp
+	"WordBelongsToLanguageMethodSelector.h"
+	"PushdownAutomaton.h"
+	"ContextFreeGrammar.h"
+	<iostream>
+	<string>
+
