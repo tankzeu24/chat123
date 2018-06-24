@@ -2,6 +2,8 @@ package asd;
 
 public class NewVersion {
 	
+	//check if service is present in the user PC ,by invkoing the command "service --status-all" and if it fails log the error and try with these
+	// new commands : "chkconfig" and "systemctl list-units"
 	public static boolean isRunning(String service ,IApplicationHandler logger)
 	{
 		

@@ -4,7 +4,7 @@ public class OldVersion {
 
 	
 	
-	//check if service is present in the user PC ,by invkoing the command "service --status-all".
+	//check if service is present in the user PC ,by invkoing the command "service --status-all" if it fails log an error.
 	public static boolean isRunning(String service ,IApplicationHandler logger)
 	{
 		
